@@ -14,13 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('absensi', function (Blueprint $table) {
-            $table->integer('id_absensi');
-            $table->integer('id_pegawai');
+            $table->increments('id_absensi');
+            $table->integer('id_pegawai')->unsigned();
             $table->timestamp('tanggal_masuk')->nullable()->default(null);
             $table->timestamp('tanggal_keluar')->nullable()->default(null);
             $table->timestamps();
 
-            $table->primary('id_absensi');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');
         });
     }
