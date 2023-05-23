@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('id_pegawai')->unsigned();
             $table->timestamp('tanggal_masuk')->nullable()->default(null);
             $table->timestamp('tanggal_keluar')->nullable()->default(null);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');
         });

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->increments('id_produk_supplier');
             $table->integer('id_produk')->unsigned();
             $table->integer('id_supplier')->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_produk')->references('id_produk')->on('produk');
             $table->foreign('id_supplier')->references('id_supplier')->on('supplier');

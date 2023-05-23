@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('produk_kategori', function (Blueprint $table) {
             $table->increments('id_produk_kategori');
             $table->string('nama_produk_kategori');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
         });
     }

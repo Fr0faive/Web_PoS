@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('jenis_bonus', function (Blueprint $table) {
             $table->increments('id_jenis_bonus');
             $table->string('nama_jenis_bonus');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
         });
     }

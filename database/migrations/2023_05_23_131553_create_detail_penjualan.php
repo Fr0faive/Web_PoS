@@ -19,7 +19,8 @@ return new class extends Migration
             $table->integer('id_penjualan')->unsigned();
             $table->integer('qty_produk');
             $table->integer('harga_satuan');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_produk')->references('id_produk')->on('produk');
             $table->foreign('id_penjualan')->references('id_penjualan')->on('penjualan');

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('barcode')->unique();
             $table->integer('stok');
             $table->integer('harga');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_produk_kategori')->references('id_produk_kategori')->on('produk_kategori');
         });

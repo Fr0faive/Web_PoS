@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('alamat');
             $table->fullText('alamat');
             $table->string('kontak');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
             
         });
     }

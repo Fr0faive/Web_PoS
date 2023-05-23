@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('total_harga');
             $table->integer('bayar');
             $table->integer('kembali');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');
         });

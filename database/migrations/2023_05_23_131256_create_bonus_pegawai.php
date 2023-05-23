@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('jumlah_bonus');
             $table->integer('bulan');
             $table->integer('tahun');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_jenis_bonus')->references('id_jenis_bonus')->on('jenis_bonus');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');

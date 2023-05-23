@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamp('tanggal_po')->nullable()->default(null);
             $table->timestamp('tanggal_pengiriman')->nullable()->default(null);
             $table->timestamp('tanggal_penerimaan')->nullable()->default(null);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_supplier')->references('id_supplier')->on('supplier');
         });

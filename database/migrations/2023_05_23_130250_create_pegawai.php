@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('id_jabatan')->unsigned();
             $table->string('password_akun');
             $table->fullText('password_akun');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatan');
         });
