@@ -14,8 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('produk', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_produk');
+            $table->string('nama_produk');
+            $table->integer('id_produk_kategori');
+            $table->string('barcode')->unique();
+            $table->integer('stok');
+            $table->integer('harga');
             $table->timestamps();
+
+            $table->primary('id_produk');
+            $table->foreign('id_produk_kategori')->references('id_produk_kategori')->on('produk_kategori');
         });
     }
 

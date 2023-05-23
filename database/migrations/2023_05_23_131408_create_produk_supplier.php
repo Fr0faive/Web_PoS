@@ -14,8 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('produk_supplier', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_produk_supplier');
+            $table->integer('id_produk');
+            $table->integer('id_supplier');
             $table->timestamps();
+
+            $table->primary('id_produk_supplier');
+            $table->foreign('id_produk')->references('id_produk')->on('produk');
+            $table->foreign('id_supplier')->references('id_supplier')->on('supplier');
         });
     }
 

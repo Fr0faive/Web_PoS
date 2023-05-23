@@ -14,8 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('penjualan', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_penjualan');
+            $table->integer('id_pegawai');
+            $table->timestamp('tanggal_penjualan');
+            $table->integer('total_harga');
+            $table->integer('bayar');
+            $table->integer('kembali');
             $table->timestamps();
+
+            $table->primary('id_penjualan');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');
         });
     }
 

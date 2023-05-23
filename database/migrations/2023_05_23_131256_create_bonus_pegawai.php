@@ -14,8 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bonus_pegawai', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_bonus_pegawai');
+            $table->integer('id_jenis_bonus');
+            $table->integer('id_pegawai');
+            $table->integer('jumlah_bonus');
+            $table->integer('bulan');
+            $table->integer('tahun');
             $table->timestamps();
+
+            $table->primary('id_bonus_pegawai');
+            $table->foreign('id_jenis_bonus')->references('id_jenis_bonus')->on('jenis_bonus');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');
         });
     }
 
