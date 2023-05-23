@@ -20,8 +20,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([
-            jabatanSeeder::class,
+
+        \DB::table('jabatan')->insert([
+            'nama_jabatan' => "Admin",
         ]);
+        \DB::table('jabatan')->insert([
+            'nama_jabatan' => "Kasir",
+        ]);
+
+        \DB::table('pegawai')->insert([
+            'nomor_pegawai' => "12345678",
+            'nama_pegawai' => "Si Admin",
+            'id_jabatan' => 1,
+            'password_akun' => \Hash::make("12344321"),
+        ]);
+
     }
 }

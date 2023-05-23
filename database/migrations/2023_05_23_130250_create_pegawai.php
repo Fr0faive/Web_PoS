@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_pegawai');
             $table->integer('id_jabatan')->unsigned();
             $table->string('password_akun');
+            $table->string('remember_token')->nullable();
             $table->fullText('password_akun');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
