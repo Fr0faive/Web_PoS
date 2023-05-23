@@ -2,6 +2,9 @@
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CpController;
 
+use App\Http\Controllers\Backend\AuthController as AuthBackend;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +22,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::get("/",[AuthController::class, 'login']);
-Route::get("/cp/dashboard",[CpController::class, 'dashboard']);
+Route::get("/",[AuthController::class, 'login'])->name("login");
+Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard");
+
+Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
