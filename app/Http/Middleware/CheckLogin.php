@@ -16,6 +16,18 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $pageIsLogin = array_slice(func_get_args(), 2)[0];
+
+        $pageIsLogin    = !empty($pageIsLogin) && $pageIsLogin != "false" ? true : false;
+
+        $userIsLogin = !empty(\Auth::user()->id_pegawai);
+        if($userIsLogin == $pageIsLogin){
+            return $next($request);
+        }
+        if($userIsLogin){
+            return redirect(route("cp.dashboard"));
+        }else{
+            return redirect('/');
+        }
     }
 }

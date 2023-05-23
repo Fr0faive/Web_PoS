@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::get("/",[AuthController::class, 'login'])->name("login");
-Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard");
+Route::get("/",[AuthController::class, 'login'])->name("login")->middleware("checkLogin:false");
+Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard")->middleware("checkLogin:true");
 
 Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
+Route::get("/logout",[AuthBackend::class, 'logout'])->name("logout");

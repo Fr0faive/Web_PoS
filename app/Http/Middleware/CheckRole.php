@@ -16,6 +16,15 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $roles = array_slice(func_get_args(), 2);
+
+        foreach ($roles as $role) { 
+            $user = \Auth::user()->nama_jabatan;
+            if( $user == $role){
+                return $next($request);
+            }
+        }
+
+        return route("cp.dashboard");
     }
 }
