@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/",[AuthController::class, 'login'])->name("login")->middleware("checkLogin:false");
 Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard")->middleware("checkLogin:true");
+Route::get("/cp/test",function(){
+    return "";
+})->middleware(["checkLogin:true","checkRole:pegawai"]);
 
 Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
 Route::get("/logout",[AuthBackend::class, 'logout'])->name("logout");
