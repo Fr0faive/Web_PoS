@@ -11,4 +11,8 @@ class Absensi extends Model
 
     protected $table = "absensi";
     protected $primaryKey = 'id_absensi';
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class,"id_pegawai","id_pegawai");
+    }
 }

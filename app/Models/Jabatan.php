@@ -10,4 +10,9 @@ class Jabatan extends Model
     use HasFactory;
     protected $table = "jabatan";
     protected $primaryKey = 'id_jabatan';
+
+    public function pegawai()
+    {
+        return $this->hasOne(Pegawai::class,"id_jabatan","id_jabatan");
+    }
 }
