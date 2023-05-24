@@ -2,11 +2,7 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-    @include('partials/header')
-=======
     @include("partials/header")
->>>>>>> 2abb4317b6fbf340f164183921d6fcfa28396c3c
     <title>Dashboard</title>
 </head>
 
