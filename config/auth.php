@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        // 'passwords' => 'users',
+        'guard' => 'pegawai',
+        'passwords' => 'users',
     ],
 
     /*
@@ -36,7 +36,11 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'pegawai' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'admin' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
