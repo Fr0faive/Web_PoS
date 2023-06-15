@@ -20,7 +20,7 @@ class CheckLogin
 
         $pageIsLogin    = !empty($pageIsLogin) && $pageIsLogin != "false" ? true : false;
 
-        $userIsLogin = \Auth::guard("admin")->check() || \Auth::guard("pegawai")->check();
+        $userIsLogin = \Auth::guard("admin")->check() || \Auth::guard("kasir")->check();
         if($userIsLogin == $pageIsLogin){
             return $next($request);
         }

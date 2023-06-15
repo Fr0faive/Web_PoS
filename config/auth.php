@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'pegawai',
+        'guard' => 'kasir',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'pegawai' => [
+        'kasir' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
