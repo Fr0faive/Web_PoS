@@ -10,331 +10,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </head>
 
 <body class="bg-dashboard bg-cover">
     
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="relative shadow-md sm:rounded-lg">
     <div class="p-2 bg-gray-50">
     <table class="table custom-table" id="dataTable">
         <thead class="bg-gray-100">
             <tr>
                 <td scope="col">
-                    Product name
+                    Nama
                 </td>
                 <td scope="col">
-                    Color
+                    Nomor Pegawai
                 </td>
                 <td scope="col">
-                    Category
-                </td>
-                <td scope="col">
-                    Price
+                    Jabatan
                 </td>
                 <td scope="col">
                     Action
                 </td>
             </tr>
         </thead>
-        <tbody>
-            <tr >
-                <td scope="row">
-                    Apple MacBook Pro 17"
-                </td>
-                <td>
-                    Silver
-                </td>
-                <td>
-                    Laptop
-                </td>
-                <td>
-                    $2999
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr>
-                <td scope="row">
-                    Microsoft Surface Pro
-                </td>
-                <td>
-                    White
-                </td>
-                <td>
-                    Laptop PC
-                </td>
-                <td>
-                    $1999
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <td scope="row">
-                    Magic Mouse 2
-                </td>
-                <td>
-                    Black
-                </td>
-                <td>
-                    Accessories
-                </td>
-                <td>
-                    $99
-                </td>
-                <td>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-        </tbody>
     </table>
     </div>
 </div>
 
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable();
+            $('#dataTable').DataTable({
+                serverside : true,
+                processing : true,
+                ajax    : {
+                    url     : "{{ route('pegawai.datatable') }}",
+                },
+                columns: [
+                    { data: 'nama_pegawai', name : 'nama_pegawai' },
+                    { data: 'nomor_pegawai', name : 'nomor_pegawai' },
+                    { data: 'jabatan.nama_jabatan', name : 'jabatan.nama_jabatan' },
+                    { data: null, width : '200', render : function(data){
+                        return `
+                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button>
+                        <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                        `;
+                    } },
+                ]
+            });
 
         });
     </script>

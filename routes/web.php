@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\CpController;
 use App\Http\Controllers\Frontend\PegawaiController;
 
 use App\Http\Controllers\Backend\AuthController as AuthBackend;
+use App\Http\Controllers\Backend\PegawaiController as PegawaiBackend;
 
 
 use Illuminate\Support\Facades\Route;
@@ -35,3 +36,4 @@ Route::get("/logout",[AuthBackend::class, 'logout'])->name("logout");
 
 // Pegawai
 Route::get("/cp/pegawai",[PegawaiController::class, 'pegawai'])->name("cp.pegawai")->middleware("checkLogin:true");
+Route::get("/pegawai/datatable",[PegawaiBackend::class, 'datatable'])->name("pegawai.datatable")->middleware("checkLogin:true");
