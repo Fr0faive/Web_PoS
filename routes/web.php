@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CpController;
+use App\Http\Controllers\Frontend\PegawaiController;
 
 use App\Http\Controllers\Backend\AuthController as AuthBackend;
 
@@ -30,3 +31,7 @@ Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboa
 
 Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
 Route::get("/logout",[AuthBackend::class, 'logout'])->name("logout");
+
+
+// Pegawai
+Route::get("/cp/pegawai",[PegawaiController::class, 'pegawai'])->name("cp.pegawai")->middleware("checkLogin:true");
