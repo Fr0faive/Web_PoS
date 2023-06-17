@@ -1,0 +1,31 @@
+#dataTable_wrapper .dataTables_length select{
+    width: 60px;
+    border-radius: 5px;
+}
+#dataTable_wrapper table{
+    width: 100% !important;
+    padding: 10px 0;
+    border-bottom: none !important;
+}
+#dataTable_filter input{
+    border-radius: 5px;
+    margin-left: 10px;
+}
+#dataTable_wrapper{
+    background: transparent !important;
+}
+#dataTable_wrapper table.dataTable thead th, 
+#dataTable_wrapper table.dataTable thead td{
+    border-bottom: none !important;
+}
+#dataTable_wrapper .dataTables_paginate .paginate_button{
+    border-radius: 5px;
+    background: white;
+    height: 40px;
+}
+#dataTable_wrapper .dataTables_paginate .paginate_button.current {
+    border: none;
+    background: rgb(26 86 219);
+    color: white !important;
+    padding: 9px 16px;
+}
