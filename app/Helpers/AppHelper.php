@@ -10,4 +10,13 @@ class AppHelper{
         }
         return null;
     }
+    static function userLogin(){    
+        return auth()->guard(\AppHelper::activeGuard())->user();
+    }
+    static function absensiToday(){
+        $id_pegawai     = \AppHelper::userLogin()->id_pegawai;
+        return \DB::table("absensi")->where("id_pegawai",$id_pegawai)
+        ->where(\DB::raw("DATE(tanggal_masuk)"),date("Y-m-d"))
+        ->first();
+    }
 }

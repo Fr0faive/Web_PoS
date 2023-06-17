@@ -97,14 +97,20 @@ class ProductCategoryController extends Controller
         if (!$validation_error){
             
             $productCategory   = Produk_Kategori::find($id);
-    
-            if($productCategory->delete()){
-                $status     = "success";
-                $message    = "Produk kategori berhasil dihapus";
-            }else{
+            
+            try {
+                if($productCategory->delete()){
+                    $status     = "success";
+                    $message    = "Produk kategori berhasil dihapus";
+                }else{
+                    $status     = "error";
+                    $message    = "Produk kategori gagal dihapus";
+                }
+            } catch (\Throwable $th) {
                 $status     = "error";
                 $message    = "Produk kategori gagal dihapus";
             }
+            
         }
 
         $response = [

@@ -7,8 +7,8 @@ use App\Http\Controllers\Backend\PegawaiController as PegawaiBackend;
 use App\Http\Controllers\Backend\ProductCategoryController as ProductCategoryBackend;
 use App\Http\Controllers\Backend\ProductController as ProductBackend;
 use App\Http\Controllers\Backend\SupplierController as SupplierBackend;
-
-
+use App\Http\Controllers\Backend\AbsensiController as AbsensiBackend;
+use App\Models\Absensi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,12 +26,21 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::get("/",[AuthController::class, 'login'])->name("login")->middleware("checkLogin:false");
-Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard")->middleware("checkLogin:true");
 
-Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
 Route::get("/logout",[AuthBackend::class, 'logout'])->name("logout");
 
+Route::middleware(["checkLogin:false"])->group(function(){
+    Route::get("/",[AuthController::class, 'login'])->name("login");
+    Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
+});
+
+Route::middleware(["checkLogin:true"])->group(function(){   
+    Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard");
+
+    Route::get("/cp/absensi",[CpController::class, 'absensi'])->name("cp.absensi");
+    Route::get("/absensi/datatable",[AbsensiBackend::class, 'datatable'])->name("absensi.datatable");
+    Route::post("/absensi/tambah",[AbsensiBackend::class, 'insertAbsensi'])->name("absensi.insert");
+});
 
 Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     // Pegawai

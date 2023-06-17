@@ -40,4 +40,10 @@ class CpController extends Controller
         $data["suppliers"]           = Supplier::all();
         return view("cp.product",$data);
     }
+
+    public function absensi(Request $request)
+    {
+        $data   = [];
+        return view("cp.absensi",$data);
+    }
 }
