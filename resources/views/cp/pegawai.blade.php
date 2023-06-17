@@ -3,13 +3,12 @@
 
 <head>
     @include("partials/header")
-    <title>Dashboard</title>
-
+    <title>Pegawai</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    @vite(['resources/css/app.css','resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <link rel="stylesheet" href="{{ url('/assets/custom_datatable.css') }}">
 </head>
 
 <body class="bg-dashboard bg-cover">
@@ -20,26 +19,26 @@
         <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
             Tambah Pegawai
         </button>
-        <div class="relative shadow-md sm:rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
-            <div class="p-2 ">
-            <table class="table custom-table bg-white backdrop-filter backdrop-blur-md bg-opacity-40" id="dataTable">
-                <thead class="bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
-                    <tr>
-                        <td scope="col">
-                            Nama
-                        </td>
-                        <td scope="col">
-                            Nomor Pegawai
-                        </td>
-                        <td scope="col">
-                            Jabatan
-                        </td>
-                        <td scope="col">
-                            Action
-                        </td>
-                    </tr>
-                </thead>
-            </table>
+        <div class="relative shadow-md sm:rounded-lg">
+            <div class="p-2 mt-2 rounded-lg">
+                <table id="dataTable">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <td scope="col">
+                                Nama
+                            </td>
+                            <td scope="col">
+                                Nomor Pegawai
+                            </td>
+                            <td scope="col">
+                                Jabatan
+                            </td>
+                            <td scope="col">
+                                Action
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
 
