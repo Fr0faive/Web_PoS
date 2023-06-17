@@ -19,10 +19,10 @@
         <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
             Tambah Pegawai
         </button>
-        <div class="relative shadow-md sm:rounded-lg">
-            <div class="p-2 bg-gray-50">
-            <table class="table custom-table" id="dataTable">
-                <thead class="bg-gray-100">
+        <div class="relative shadow-md sm:rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
+            <div class="p-2 ">
+            <table class="table custom-table bg-white backdrop-filter backdrop-blur-md bg-opacity-40" id="dataTable">
+                <thead class="bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
                     <tr>
                         <td scope="col">
                             Nama
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Main modal -->
-        <div id="modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full h-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 max-h-full bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <form action="" method="post">

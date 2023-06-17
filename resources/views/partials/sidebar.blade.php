@@ -13,7 +13,7 @@
     class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
     <div
-        class="h-full px-3 py-4 overflow-y-auto rounded-r-lg shadow-md bg-blue-300 backdrop-filter backdrop-blur-md bg-opacity-40 dark:bg-gray-800">
+        class="h-full px-3 py-4 overflow-y-auto rounded-r-lg shadow-md bg-white backdrop-filter backdrop-blur-md bg-opacity-40 dark:bg-gray-800">
         <a href="{{ route('cp.dashboard') }}" class="flex items-center mb-6 text-xl font-semibold text-gray-900 dark:text-white">
             <img class="w-20 h-20 mr-1" src="{{ asset('/images/logo.svg') }}" alt="logo">
             Point of Sales
