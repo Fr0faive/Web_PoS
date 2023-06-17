@@ -12,7 +12,7 @@ class Supplier extends Model
     protected $primaryKey = 'id_supplier';
     public function produk_supplier()
     {
-        return $this->hasMany(Produk_Supplier::class,"id_supplier","id_supplier");
+        return $this->hasOne(Produk_Supplier::class,"id_supplier","id_supplier");
     }
     public function purchase_order()
     {

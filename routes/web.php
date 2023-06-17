@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\CpController;
 use App\Http\Controllers\Backend\AuthController as AuthBackend;
 use App\Http\Controllers\Backend\PegawaiController as PegawaiBackend;
 use App\Http\Controllers\Backend\ProductCategoryController as ProductCategoryBackend;
+use App\Http\Controllers\Backend\ProductController as ProductBackend;
 use App\Http\Controllers\Backend\SupplierController as SupplierBackend;
 
 
@@ -56,4 +57,12 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::post("/supplier/tambah",[SupplierBackend::class, 'insertSupplier'])->name("supplier.insert");
     Route::post("/supplier/{id}/edit",[SupplierBackend::class, 'updateSupplier'])->name("supplier.update");
     Route::post("/supplier/{id}/delete",[SupplierBackend::class, 'deleteSupplier'])->name("supplier.delete");
+
+    // Product
+    Route::get("/cp/produk",[CpController::class, 'product'])->name("cp.product");
+    Route::get("/produk/datatable",[ProductBackend::class, 'datatable'])->name("product.datatable");
+    Route::get("/produk/{id}/get",[ProductBackend::class, 'getProduct'])->name("product.get");
+    Route::post("/produk/tambah",[ProductBackend::class, 'insertProduct'])->name("product.insert");
+    Route::post("/produk/{id}/edit",[ProductBackend::class, 'updateProduct'])->name("product.update");
+    Route::post("/produk/{id}/delete",[ProductBackend::class, 'deleteProduct'])->name("product.delete");
 });
