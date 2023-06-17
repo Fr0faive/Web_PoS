@@ -23,7 +23,8 @@
     background: white;
     height: 40px;
 }
-#dataTable_wrapper .dataTables_paginate .paginate_button.current {
+#dataTable_wrapper .dataTables_paginate .paginate_button.current,
+#dataTable_wrapper .dataTables_paginate .paginate_button:not(.disabled):hover {
     border: none;
     background: rgb(26 86 219);
     color: white !important;

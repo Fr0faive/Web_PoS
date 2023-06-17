@@ -14,25 +14,29 @@
 <body class="bg-dashboard bg-cover">
 
     @include("partials.sidebar")
-    <!-- Modal toggle -->
-    <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-        Tambah Kategori
-    </button>
     
-    <div class="relative shadow-md sm:rounded-lg">
-        <div class="p-2 bg-gray-50">
-        <table class="table custom-table" id="dataTable">
-            <thead class="bg-gray-100">
-                <tr>
-                    <td scope="col">
-                        Nama Kategori
-                    </td>
-                    <td scope="col">
-                        Action
-                    </td>
-                </tr>
-            </thead>
-        </table>
+    <div class="p-4 sm:ml-64">
+        <div class="p-4 bg-gray-50 rounded shadow-md ">
+            <!-- Modal toggle -->
+            <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                Tambah Kategori
+            </button>
+            <div class="relative rounded-lg">
+                <div class="p-2 mt-2 rounded-lg ">
+                <table id="dataTable">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <td scope="col">
+                                Nama Kategori
+                            </td>
+                            <td scope="col">
+                                Action
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+                </div>
+            </div>
         </div>
     </div>
 
