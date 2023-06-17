@@ -24,6 +24,22 @@ class SupplierController extends Controller
         $message     = "";
         $validation_error   = false;
 
+        $status             = "";
+        $message            = "";
+        $validation_error   = false;
+        
+        $validator = Validator::make($request->all(), [
+            'nama_supplier' => ['required'],
+            'alamat' => ['required'],
+            'kontak' => ['required','numeric'],
+        ]);
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
+
         if (!$validation_error){
             
             $supplier   = new Supplier;
@@ -50,6 +66,18 @@ class SupplierController extends Controller
         $status     = "";
         $message     = "";
         $validation_error   = false;
+
+        $validator = Validator::make($request->all(), [
+            'nama_supplier' => ['required'],
+            'alamat' => ['required'],
+            'kontak' => ['required','numeric'],
+        ]);
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
 
         if (!$validation_error){
             

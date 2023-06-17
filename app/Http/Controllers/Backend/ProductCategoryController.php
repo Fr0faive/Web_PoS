@@ -24,12 +24,22 @@ class ProductCategoryController extends Controller
         $message     = "";
         $validation_error   = false;
 
+        $validator = Validator::make($request->all(), [
+            'nama_produk_kategori' => ['required'],
+        ]);
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
+
         if (!$validation_error){
             
-            $productcategory   = new Produk_Kategori;
-            $productcategory->nama_produk_kategori = $request->nama_produk_kategori;
+            $productCategory   = new Produk_Kategori;
+            $productCategory->nama_produk_kategori = $request->nama_produk_kategori;
     
-            if($productcategory->save()){
+            if($productCategory->save()){
                 $status     = "success";
                 $message    = "Produk kategori berhasil diinput";
             }else{
@@ -49,12 +59,22 @@ class ProductCategoryController extends Controller
         $message     = "";
         $validation_error   = false;
 
+        $validator = Validator::make($request->all(), [
+            'nama_produk_kategori' => ['required'],
+        ]);
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
+
         if (!$validation_error){
             
-            $productcategory   = Produk_Kategori::find($id);
-            $productcategory->nama_produk_kategori = $request->nama_produk_kategori;
+            $productCategory   = Produk_Kategori::find($id);
+            $productCategory->nama_produk_kategori = $request->nama_produk_kategori;
     
-            if($productcategory->save()){
+            if($productCategory->save()){
                 $status     = "success";
                 $message    = "Produk kategori berhasil diupdate";
             }else{
@@ -76,9 +96,9 @@ class ProductCategoryController extends Controller
 
         if (!$validation_error){
             
-            $productcategory   = Produk_Kategori::find($id);
+            $productCategory   = Produk_Kategori::find($id);
     
-            if($productcategory->delete()){
+            if($productCategory->delete()){
                 $status     = "success";
                 $message    = "Produk kategori berhasil dihapus";
             }else{

@@ -24,6 +24,19 @@ class PegawaiController extends Controller
         $message     = "";
         $validation_error   = false;
 
+        $validator = Validator::make($request->all(), [
+            // 'id_jabatan' => ['required'],
+            'nama_pegawai' => ['required'],
+            'password_akun' => ['required','min:8','max:32'],
+            'nomor_pegawai' => ['required','numeric'],
+        ]);
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
+
         if (!$validation_error){
             
             $pegawai   = new Pegawai;
@@ -51,6 +64,28 @@ class PegawaiController extends Controller
         $status     = "";
         $message     = "";
         $validation_error   = false;
+
+        if(!empty($request->password_akun)){
+            $validator = Validator::make($request->all(), [
+                // 'id_jabatan' => ['required'],
+                'nama_pegawai' => ['required'],
+                'password_akun' => ['min:8','max:32'],
+                'nomor_pegawai' => ['required','numeric'],
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                // 'id_jabatan' => ['required'],
+                'nama_pegawai' => ['required'],
+                // 'password_akun' => ['min:8','max:32'],
+                'nomor_pegawai' => ['required','numeric'],
+            ]);
+        }
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
 
         if (!$validation_error){
             

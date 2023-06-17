@@ -162,9 +162,9 @@
                 dataType : "JSON",
                 success : function(data){
                     $("#modal form [type=submit]").prop("disabled",false);
-                    $("#modal form [data-modal-hide=modal]").click();
                     alert(data.message);
                     if(data.status == "success"){
+                        $("#modal form [data-modal-hide=modal]").click();
                         $("#dataTable").DataTable().ajax.reload();
                     }
                 }
