@@ -6,26 +6,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-use App\Models\Produk_Kategori;
+use App\Models\Supplier;
 use DataTables;
 
-class ProductCategoryController extends Controller
+class SupplierController extends Controller
 {
-    public function getProductCategory(Request $request,$id) {
-        $data   = Produk_Kategori::find($id);
+    public function getSupplier(Request $request,$id) {
+        $data   = Supplier::find($id);
         return $data;
     }
     public function datatable(Request $request) {
-        $data   = Produk_Kategori::get();
+        $data   = Supplier::get();
         return DataTables::of($data)->make(true);
     }
-    public function insertProductCategory(Request $request) {
+    public function insertSupplier(Request $request) {
         $status     = "";
         $message     = "";
         $validation_error   = false;
 
+        $status             = "";
+        $message            = "";
+        $validation_error   = false;
+        
         $validator = Validator::make($request->all(), [
-            'nama_produk_kategori' => ['required'],
+            'nama_supplier' => ['required'],
+            'alamat' => ['required'],
+            'kontak' => ['required','numeric'],
         ]);
   
         if ($validator->fails()) {
@@ -36,15 +42,17 @@ class ProductCategoryController extends Controller
 
         if (!$validation_error){
             
-            $productCategory   = new Produk_Kategori;
-            $productCategory->nama_produk_kategori = $request->nama_produk_kategori;
+            $supplier   = new Supplier;
+            $supplier->nama_supplier = $request->nama_supplier;
+            $supplier->alamat = $request->alamat;
+            $supplier->kontak = $request->kontak;
     
-            if($productCategory->save()){
+            if($supplier->save()){
                 $status     = "success";
-                $message    = "Produk kategori berhasil diinput";
+                $message    = "Supplier berhasil diinput";
             }else{
                 $status     = "error";
-                $message    = "Produk kategori gagal diinput";
+                $message    = "Supplier gagal diinput";
             }
         }
 
@@ -54,13 +62,15 @@ class ProductCategoryController extends Controller
         ];
         return response()->json($response);
     }
-    public function updateProductCategory(Request $request,$id) {
+    public function updateSupplier(Request $request,$id) {
         $status     = "";
         $message     = "";
         $validation_error   = false;
 
         $validator = Validator::make($request->all(), [
-            'nama_produk_kategori' => ['required'],
+            'nama_supplier' => ['required'],
+            'alamat' => ['required'],
+            'kontak' => ['required','numeric'],
         ]);
   
         if ($validator->fails()) {
@@ -71,15 +81,17 @@ class ProductCategoryController extends Controller
 
         if (!$validation_error){
             
-            $productCategory   = Produk_Kategori::find($id);
-            $productCategory->nama_produk_kategori = $request->nama_produk_kategori;
+            $supplier   = Supplier::find($id);
+            $supplier->nama_supplier = $request->nama_supplier;
+            $supplier->alamat = $request->alamat;
+            $supplier->kontak = $request->kontak;
     
-            if($productCategory->save()){
+            if($supplier->save()){
                 $status     = "success";
-                $message    = "Produk kategori berhasil diupdate";
+                $message    = "Supplier berhasil diupdate";
             }else{
                 $status     = "error";
-                $message    = "Produk kategori gagal diupdate";
+                $message    = "Supplier gagal diupdate";
             }
         }
 
@@ -89,21 +101,21 @@ class ProductCategoryController extends Controller
         ];
         return response()->json($response);
     }
-    public function deleteProductCategory(Request $request,$id) {
+    public function deleteSupplier(Request $request,$id) {
         $status     = "";
         $message     = "";
         $validation_error   = false;
 
         if (!$validation_error){
             
-            $productCategory   = Produk_Kategori::find($id);
+            $supplier   = Supplier::find($id);
     
-            if($productCategory->delete()){
+            if($supplier->delete()){
                 $status     = "success";
-                $message    = "Produk kategori berhasil dihapus";
+                $message    = "Supplier berhasil dihapus";
             }else{
                 $status     = "error";
-                $message    = "Produk kategori gagal dihapus";
+                $message    = "Supplier gagal dihapus";
             }
         }
 

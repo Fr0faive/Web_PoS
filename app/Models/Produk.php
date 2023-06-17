@@ -17,7 +17,7 @@ class Produk extends Model
     }
     public function produk_supplier()
     {
-        return $this->hasMany(Produk_Supplier::class,"id_produk","id_produk");
+        return $this->hasOne(Produk_Supplier::class,"id_produk","id_produk");
     }
     public function po_produk()
     {
