@@ -23,4 +23,10 @@ class CpController extends Controller
         $data   = [];
         return view("cp.product_category",$data);
     }
+    
+    public function supplier(Request $request)
+    {
+        $data   = [];
+        return view("cp.supplier",$data);
+    }
 }

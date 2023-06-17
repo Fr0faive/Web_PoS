@@ -18,7 +18,7 @@
 
     <!-- Modal toggle -->
     <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-        Tambah Kategori
+        Tambah Supplier
     </button>
     
     <div class="relative shadow-md sm:rounded-lg">
@@ -27,7 +27,13 @@
             <thead class="bg-gray-100">
                 <tr>
                     <td scope="col">
-                        Nama Kategori
+                        Nama
+                    </td>
+                    <td scope="col">
+                        Kontak
+                    </td>
+                    <td scope="col">
+                        Alamat
                     </td>
                     <td scope="col">
                         Action
@@ -56,8 +62,16 @@
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="nama_produk_kategori" id="nama_produk_kategori" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                            <label for="nama_produk_kategori" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Kategori</label>
+                            <input type="text" name="nama_supplier" id="nama_supplier" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="nama_supplier" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Supplier</label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="kontak" id="kontak" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <label for="kontak" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kontak</label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <textarea rows="5" name="alamat" id="alamat" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required></textarea>
+                            <label for="alamat" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Alamat</label>
                         </div>
                     </div>
                     <!-- Modal footer -->
@@ -77,14 +91,16 @@
                 serverside : true,
                 processing : true,
                 ajax    : {
-                    url     : "{{ route('product_category.datatable') }}",
+                    url     : "{{ route('supplier.datatable') }}",
                 },
                 columns: [
-                    { data: 'nama_produk_kategori', name : 'nama_produk_kategori' },
+                    { data: 'nama_supplier', name : 'nama_supplier' },
+                    { data: 'kontak', name : 'kontak' },
+                    { data: 'alamat', name : 'alamat' },
                     { data: null, width : '200', render : function(data){
                         return `
-                        <button data-id="${data.id_produk_kategori}" type="button" class="btn_edit text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button>
-                        <button data-id="${data.id_produk_kategori}" type="button" class="btn_delete text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                        <button data-id="${data.id_supplier}" type="button" class="btn_edit text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button>
+                        <button data-id="${data.id_supplier}" type="button" class="btn_delete text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
                         `;
                     } },
                 ]
@@ -93,8 +109,8 @@
             $("body").on("click",".btn_add",function(e){
                 // e.preventDefault();
                 $("#modal form").get(0).reset();
-                $("#modal form").get(0).setAttribute('action', `{{ route("product_category.insert") }}`);                
-                $(".modal-title").html("Tambah Produk Kategori");
+                $("#modal form").get(0).setAttribute('action', `{{ route("supplier.insert") }}`);                
+                $(".modal-title").html("Tambah Supplier");
             })
 
             $("body").on("click",".btn_edit",function(e){
@@ -102,15 +118,17 @@
                 $(".btn_add").click();
                 let id = $(this).data("id");
                 $.ajax({
-                    url     : `{{ route("product_category.get",["id" => ":id"]) }}`.replace(":id",id),
+                    url     : `{{ route("supplier.get",["id" => ":id"]) }}`.replace(":id",id),
                     method  : "GET",
                     dataType  : "JSON",
                     success : function(data){
-                        $("#nama_produk_kategori").val(data.nama_produk_kategori);
+                        $("#kontak").val(data.kontak);
+                        $("#alamat").val(data.alamat);
+                        $("#nama_supplier").val(data.nama_supplier);
                     }
                 })
-                $("#modal form").get(0).setAttribute('action',`{{ route("product_category.update",["id" => ":id"]) }}`.replace(":id",id));
-                $(".modal-title").html("Edit Produk Kategori");
+                $("#modal form").get(0).setAttribute('action',`{{ route("supplier.update",["id" => ":id"]) }}`.replace(":id",id));
+                $(".modal-title").html("Edit Supplier");
             })
 
             $("body").on("click",".btn_delete",function(e){
@@ -119,7 +137,7 @@
                     $(this).prop("disabled",true);
                     let id = $(this).data("id");
                     $.ajax({
-                        url     : `{{ route("product_category.delete",["id" => ":id"]) }}`.replace(":id",id),
+                        url     : `{{ route("supplier.delete",["id" => ":id"]) }}`.replace(":id",id),
                         data    : {
                             _token : $("[name=_token]").val()
                         },

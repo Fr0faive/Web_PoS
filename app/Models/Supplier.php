@@ -14,10 +14,6 @@ class Supplier extends Model
     {
         return $this->hasMany(Produk_Supplier::class,"id_supplier","id_supplier");
     }
-    public function produk_supplier()
-    {
-        return $this->hasMany(Produk_Supplier::class,"id_supplier","id_supplier");
-    }
     public function purchase_order()
     {
         return $this->hasMany(Purchase_Order::class,"id_supplier","id_supplier");
