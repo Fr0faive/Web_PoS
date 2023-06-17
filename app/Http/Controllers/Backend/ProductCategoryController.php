@@ -26,7 +26,7 @@ class ProductCategoryController extends Controller
 
         if (!$validation_error){
             
-            $ProductCategory   = new ProductCategory;
+            $ProductCategory   = new Produk_Kategori;
             $ProductCategory->nama_produk_kategori = $request->nama_produk_kategori;
     
             if($ProductCategory->save()){

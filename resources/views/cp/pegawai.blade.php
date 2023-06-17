@@ -109,7 +109,7 @@
             $("body").on("click",".btn_add",function(e){
                 // e.preventDefault();
                 $("#modal form").get(0).reset();
-                $("#modal form").get(0).setAttribute('action', '/pegawai/tambah');                
+                $("#modal form").get(0).setAttribute('action', `{{ route("pegawai.insert") }}`);                
                 $(".modal-title").html("Tambah Pegawai");
                 $("#password_akun").prop("required",true);
             })
@@ -120,7 +120,7 @@
                 $("#password_akun").prop("required",false);
                 let id = $(this).data("id");
                 $.ajax({
-                    url     : `/pegawai/${id}/get`,
+                    url     : `{{ route("pegawai.get",["id" => ":id"]) }}`.replace(":id",id),
                     method  : "GET",
                     dataType  : "JSON",
                     success : function(data){
@@ -128,7 +128,7 @@
                         $("#nama_pegawai").val(data.nama_pegawai);
                     }
                 })
-                $("#modal form").get(0).setAttribute('action',`/pegawai/${id}/edit`);
+                $("#modal form").get(0).setAttribute('action',`{{ route("pegawai.update",["id" => ":id"]) }}`.replace(":id",id));
                 $(".modal-title").html("Edit Pegawai");
             })
 
@@ -138,7 +138,7 @@
                     $(this).prop("disabled",true);
                     let id = $(this).data("id");
                     $.ajax({
-                        url     : `/pegawai/${id}/delete`,
+                        url     : `{{ route("pegawai.delete",["id" => ":id"]) }}`.replace(":id",id),
                         data    : {
                             _token : $("[name=_token]").val()
                         },
