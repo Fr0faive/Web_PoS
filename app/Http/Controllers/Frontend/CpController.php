@@ -13,4 +13,9 @@ class CpController extends Controller
         $data   = [];
         return view("cp.dashboard",$data);
     }
+    public function pegawai(Request $request)
+    {
+        $data   = [];
+        return view("pegawai.index",$data);
+    }
 }

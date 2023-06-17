@@ -1,7 +1,6 @@
 <?php
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CpController;
-use App\Http\Controllers\Frontend\PegawaiController;
 
 use App\Http\Controllers\Backend\AuthController as AuthBackend;
 use App\Http\Controllers\Backend\PegawaiController as PegawaiBackend;
@@ -33,7 +32,7 @@ Route::get("/logout",[AuthBackend::class, 'logout'])->name("logout");
 
 // Pegawai
 Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
-    Route::get("/cp/pegawai",[PegawaiController::class, 'pegawai'])->name("cp.pegawai");
+    Route::get("/cp/pegawai",[CpController::class, 'pegawai'])->name("cp.pegawai");
     Route::get("/pegawai/datatable",[PegawaiBackend::class, 'datatable'])->name("pegawai.datatable");
     Route::get("/pegawai/{id}/get",[PegawaiBackend::class, 'getPegawai'])->name("pegawai.get");
     Route::post("/pegawai/tambah",[PegawaiBackend::class, 'insertPegawai'])->name("pegawai.insert");

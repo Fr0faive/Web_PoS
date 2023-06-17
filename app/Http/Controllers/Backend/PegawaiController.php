@@ -47,7 +47,6 @@ class PegawaiController extends Controller
         ];
         return response()->json($response);
     }
-
     public function updatePegawai(Request $request,$id) {
         $status     = "";
         $message     = "";
