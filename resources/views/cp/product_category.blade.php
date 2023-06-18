@@ -14,7 +14,7 @@
 <body class="bg-dashboard bg-cover">
 
     @include("partials.sidebar")
-    
+
     <div class="p-4 sm:ml-64">
         <div class="p-4 bg-gray-50 rounded shadow-md ">
             <!-- Modal toggle -->
@@ -22,7 +22,7 @@
                 Tambah Kategori
             </button>
             <div class="relative rounded-lg">
-                <div class="p-2 mt-2 rounded-lg ">
+                <div class="p-2 mt-2 rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40 ">
                 <table id="dataTable">
                     <thead class="bg-gray-100">
                         <tr>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- Main modal -->
-    <div id="modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full max-h-full bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
         <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <form action="" method="post">
@@ -71,7 +71,7 @@
             </form>
         </div>
     </div>
-  
+
 
     <script>
         $(document).ready(function () {
@@ -95,7 +95,7 @@
             $("body").on("click",".btn_add",function(e){
                 // e.preventDefault();
                 $("#modal form").get(0).reset();
-                $("#modal form").get(0).setAttribute('action', `{{ route("product_category.insert") }}`);                
+                $("#modal form").get(0).setAttribute('action', `{{ route("product_category.insert") }}`);
                 $(".modal-title").html("Tambah Produk Kategori");
             })
 

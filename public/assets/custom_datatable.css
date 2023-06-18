@@ -14,7 +14,7 @@
 #dataTable_wrapper{
     background: transparent !important;
 }
-#dataTable_wrapper table.dataTable thead th, 
+#dataTable_wrapper table.dataTable thead th,
 #dataTable_wrapper table.dataTable thead td{
     border-bottom: none !important;
 }

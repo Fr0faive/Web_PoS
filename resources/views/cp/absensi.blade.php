@@ -15,9 +15,9 @@
 
     @include("partials.sidebar")
     @csrf
-    
+
     <div class="p-4 sm:ml-64">
-        <div class="p-4 bg-gray-50 rounded shadow-md ">
+        <div class="p-4 rounded shadow-md bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             @auth("kasir")
             <button class="btn_absensi_masuk text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                 Absensi Masuk
@@ -28,8 +28,8 @@
             </button>
             @endauth
 
-            <div class="relative rounded-lg">
-                <div class="p-2 mt-2 rounded-lg ">
+            <div class="relative rounded-lg ">
+                <div class="p-2 mt-2 rounded-lg">
                 <table id="dataTable">
                     <thead class="bg-gray-100">
                         <tr>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 
     <script>
         $(document).ready(function () {
@@ -104,7 +104,7 @@
                         dataType  : "JSON",
                         success : function(data){
                             alert(data.message);
-                            
+
                             if(data.status == "success"){
                                 $("#dataTable").DataTable().ajax.reload();
                             }
