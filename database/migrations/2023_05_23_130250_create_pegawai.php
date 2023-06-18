@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nomor_pegawai')->unique();
             $table->string('nama_pegawai');
             $table->integer('id_jabatan')->unsigned();
+            $table->integer('gaji_pokok')->nullable();;
             $table->string('password_akun');
             $table->string('remember_token')->nullable();
             $table->fullText('password_akun');
