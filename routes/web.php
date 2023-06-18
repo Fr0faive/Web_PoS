@@ -74,4 +74,5 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::post("/produk/tambah",[ProductBackend::class, 'insertProduct'])->name("product.insert");
     Route::post("/produk/{id}/edit",[ProductBackend::class, 'updateProduct'])->name("product.update");
     Route::post("/produk/{id}/delete",[ProductBackend::class, 'deleteProduct'])->name("product.delete");
+    Route::post("/produk/{id}/update_stok",[ProductBackend::class, 'updateStokProduct'])->name("product.update_stok");
 });

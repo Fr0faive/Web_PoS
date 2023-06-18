@@ -121,6 +121,10 @@ class ProductController extends Controller
                 $product_supplier   = Produk_Supplier::where([
                     "id_produk" => $product->id_produk
                 ])->first();
+                if(empty($product_supplier)){
+                    $product_supplier   = new Produk_Supplier;
+                    $product_supplier->id_produk = $product->id_produk;
+                }
                 $product_supplier->id_supplier = $request->id_supplier;
                 $product_supplier->save();
                 
@@ -158,6 +162,42 @@ class ProductController extends Controller
             }else{
                 $status     = "error";
                 $message    = "Produk gagal dihapus";
+            }
+        }
+
+        $response = [
+            "status" => $status,
+            "message" => $message,
+        ];
+        return response()->json($response);
+    }
+    public function updateStokProduct(Request $request,$id) {
+        $status     = "";
+        $message     = "";
+        $validation_error   = false;
+
+        $validator = Validator::make($request->all(), [
+            'stok' => ['required','numeric','min:1'],
+        ]);
+  
+        if ($validator->fails()) {
+            $status     = "error";
+            $message    = $validator->errors()->first();
+            $validation_error   = true;
+        }
+
+        if (!$validation_error){
+            
+            $product   = Produk::find($id);
+            $product->stok += $request->stok;
+    
+            if($product->save()){
+
+                $status     = "success";
+                $message    = "Stok Produk berhasil diupdate";
+            }else{
+                $status     = "error";
+                $message    = "Stok Produk gagal diupdate";
             }
         }
 
