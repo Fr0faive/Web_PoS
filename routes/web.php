@@ -72,6 +72,7 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::get("/cp/produk",[CpController::class, 'product'])->name("cp.product");
     Route::get("/produk/datatable",[ProductBackend::class, 'datatable'])->name("product.datatable");
     Route::get("/produk/{id}/get",[ProductBackend::class, 'getProduct'])->name("product.get");
+    Route::get("/produk/getBy",[ProductBackend::class, 'getProductBy'])->name("product.getBy");
     Route::post("/produk/tambah",[ProductBackend::class, 'insertProduct'])->name("product.insert");
     Route::post("/produk/{id}/edit",[ProductBackend::class, 'updateProduct'])->name("product.update");
     Route::post("/produk/{id}/hapus",[ProductBackend::class, 'deleteProduct'])->name("product.delete");
@@ -92,4 +93,30 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::post("/purchase_order/{id_po}/tambah_produk",[POBackend::class, 'insertProduct'])->name("purchase_order.insertProduct");
     Route::post("/purchase_order/{id_po_produk}/edit_produk",[POBackend::class, 'updateProduct'])->name("purchase_order.updateProduct");
     Route::post("/purchase_order/{id_po_produk}/hapus_produk",[POBackend::class, 'deleteProduct'])->name("purchase_order.deleteProduct");
+
+    // Penjualan
+    Route::get("/penjualan/{id}/get",[PenjualanBackend::class, 'getPenjualan'])->name("penjualan.get");
+    Route::get("/penjualan/getManyPenjualan",[PenjualanBackend::class, 'getManyPenjualan'])->name("penjualan.getManyPenjualan");
+    Route::post("/penjualan/tambah",[PenjualanBackend::class, 'insertPenjualan'])->name("penjualan.insert");
+
+    // Cart
+    Route::get("/cart/{id}/get",[CartBackend::class, 'getCart'])->name("cart.get");
+    Route::post("/cart/tambah",[CartBackend::class, 'insertCart'])->name("cart.insert");
+    Route::post("/cart/{id}/edit",[CartBackend::class, 'updateCart'])->name("cart.update");
+    Route::post("/cart/{id}/hapus",[CartBackend::class, 'deleteCart'])->name("cart.delete");    
+
+    // Bonus Karyawan
+    Route::get("/cp/bonus_pegawai",[CpController::class, 'bonusPegawai'])->name("cp.bonus_pegawai");
+    Route::get("/bonus_pegawai/datatable",[BonusPegawaiBackend::class, 'datatable'])->name("bonus_pegawai.datatable");
+    Route::get("/bonus_pegawai/{id}/get",[BonusPegawaiBackend::class, 'getBonusPegawai'])->name("bonus_pegawai.get");
+    Route::post("/bonus_pegawai/tambah",[BonusPegawaiBackend::class, 'insertBonusPegawai'])->name("bonus_pegawai.insert");
+    Route::post("/bonus_pegawai/{id}/edit",[BonusPegawaiBackend::class, 'updateBonusPegawai'])->name("bonus_pegawai.update");
+    Route::post("/bonus_pegawai/{id}/hapus",[BonusPegawaiBackend::class, 'deleteBonusPegawai'])->name("bonus_pegawai.delete");
+
+    // Admin
+    Route::get("/cp/gaji_karyawan",[CpController::class, 'gajiKaryawan'])->name("cp.gaji_karyawan");
+    Route::post("/admin/hitung_gaji_karyawan",[AdminBackend::class, 'hitungGajiKaryawan'])->name("admin.hitung_gaji_karyawan");
+    Route::get("/cp/laporan_penjualan",[CpController::class, 'laporanPenjualan'])->name("cp.laporan_penjualan");
+    Route::post("/admin/get_laporan_penjualan",[AdminBackend::class, 'getLaporanPenjualan'])->name("admin.get_laporan_penjualan");
+
 });

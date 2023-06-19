@@ -16,6 +16,10 @@ class ProductController extends Controller
         $data   = Produk::with("produk_supplier")->find($id);
         return $data;
     }
+    public function getProductBy(Request $request) {
+        $data   = Produk::where($request->all())->first();
+        return $data;
+    }
     public function datatable(Request $request) {
         $data   = Produk::with("produk_supplier.supplier","produk_kategori")->get();
         return DataTables::of($data)->make(true);
