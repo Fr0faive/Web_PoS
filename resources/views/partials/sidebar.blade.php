@@ -27,11 +27,18 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('cp.absensi') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <img src="{{ asset('assets/icon-presensi.svg') }}" alt="icon-user" class="w-7 h-7">
+                    <span class="flex-1 ml-3 whitespace-nowrap">Absensi</span>
+                </a>
+            </li>
+            <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <img src="{{ asset('assets/icon-pro.svg') }}" alt="icon-user" class="w-7 h-7">
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Produk</span>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Kelola</span>
                     <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -78,13 +85,6 @@
                 </a>
             </li>
             @endauth
-            <li>
-                <a href="{{ route('cp.absensi') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <img src="{{ asset('assets/icon-presensi.svg') }}" alt="icon-user" class="w-7 h-7">
-                    <span class="flex-1 ml-3 whitespace-nowrap">Absensi</span>
-                </a>
-            </li>
             <li>
                 <a href="{{ route('logout') }}"
                     class="flex items-center p-2 text-red-500 rounded-lg dark:text-red hover:bg-gray-100 dark:hover:bg-gray-700">
