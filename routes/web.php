@@ -8,7 +8,8 @@ use App\Http\Controllers\Backend\ProductCategoryController as ProductCategoryBac
 use App\Http\Controllers\Backend\ProductController as ProductBackend;
 use App\Http\Controllers\Backend\SupplierController as SupplierBackend;
 use App\Http\Controllers\Backend\AbsensiController as AbsensiBackend;
-use App\Models\Absensi;
+use App\Http\Controllers\Backend\POController as POBackend;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,7 +50,7 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::get("/pegawai/{id}/get",[PegawaiBackend::class, 'getPegawai'])->name("pegawai.get");
     Route::post("/pegawai/tambah",[PegawaiBackend::class, 'insertPegawai'])->name("pegawai.insert");
     Route::post("/pegawai/{id}/edit",[PegawaiBackend::class, 'updatePegawai'])->name("pegawai.update");
-    Route::post("/pegawai/{id}/delete",[PegawaiBackend::class, 'deletePegawai'])->name("pegawai.delete");
+    Route::post("/pegawai/{id}/hapus",[PegawaiBackend::class, 'deletePegawai'])->name("pegawai.delete");
 
     // Product Category
     Route::get("/cp/produk_kategori",[CpController::class, 'productCategory'])->name("cp.product_category");
@@ -57,7 +58,7 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::get("/produk_kategori/{id}/get",[ProductCategoryBackend::class, 'getProductCategory'])->name("product_category.get");
     Route::post("/produk_kategori/tambah",[ProductCategoryBackend::class, 'insertProductCategory'])->name("product_category.insert");
     Route::post("/produk_kategori/{id}/edit",[ProductCategoryBackend::class, 'updateProductCategory'])->name("product_category.update");
-    Route::post("/produk_kategori/{id}/delete",[ProductCategoryBackend::class, 'deleteProductCategory'])->name("product_category.delete");
+    Route::post("/produk_kategori/{id}/hapus",[ProductCategoryBackend::class, 'deleteProductCategory'])->name("product_category.delete");
 
     // Supplier
     Route::get("/cp/supplier",[CpController::class, 'supplier'])->name("cp.supplier");
@@ -65,7 +66,7 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::get("/supplier/{id}/get",[SupplierBackend::class, 'getSupplier'])->name("supplier.get");
     Route::post("/supplier/tambah",[SupplierBackend::class, 'insertSupplier'])->name("supplier.insert");
     Route::post("/supplier/{id}/edit",[SupplierBackend::class, 'updateSupplier'])->name("supplier.update");
-    Route::post("/supplier/{id}/delete",[SupplierBackend::class, 'deleteSupplier'])->name("supplier.delete");
+    Route::post("/supplier/{id}/hapus",[SupplierBackend::class, 'deleteSupplier'])->name("supplier.delete");
 
     // Product
     Route::get("/cp/produk",[CpController::class, 'product'])->name("cp.product");
@@ -73,6 +74,22 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::get("/produk/{id}/get",[ProductBackend::class, 'getProduct'])->name("product.get");
     Route::post("/produk/tambah",[ProductBackend::class, 'insertProduct'])->name("product.insert");
     Route::post("/produk/{id}/edit",[ProductBackend::class, 'updateProduct'])->name("product.update");
-    Route::post("/produk/{id}/delete",[ProductBackend::class, 'deleteProduct'])->name("product.delete");
+    Route::post("/produk/{id}/hapus",[ProductBackend::class, 'deleteProduct'])->name("product.delete");
     Route::post("/produk/{id}/update_stok",[ProductBackend::class, 'updateStokProduct'])->name("product.update_stok");
+
+    // Purchase Order
+    Route::get("/cp/purchase_order",[CpController::class, 'purchase_order'])->name("cp.purchase_order");
+    Route::get("/purchase_order/datatable",[POBackend::class, 'datatable'])->name("purchase_order.datatable");
+    Route::get("/purchase_order/{id}/get",[POBackend::class, 'getPO'])->name("purchase_order.get");
+    Route::post("/purchase_order/tambah",[POBackend::class, 'insertPO'])->name("purchase_order.insert");
+    Route::post("/purchase_order/{id}/edit",[POBackend::class, 'updatePO'])->name("purchase_order.update");
+    Route::post("/purchase_order/{id}/hapus",[POBackend::class, 'deletePO'])->name("purchase_order.delete");
+    Route::post("/purchase_order/{id}/update_waktu_pengiriman",[POBackend::class, 'updateDeliveryTime'])->name("purchase_order.updateDeliveryTime");
+    Route::post("/purchase_order/{id}/update_waktu_penerimaan",[POBackend::class, 'updateReceivedTime'])->name("purchase_order.updateReceivedTime");
+    Route::get("/purchase_order/{id_po_produk}/get_produk",[POBackend::class, 'getProduct'])->name("purchase_order.getProduct");
+    Route::get("/purchase_order/get_many_produk",[POBackend::class, 'getManyProduct'])->name("purchase_order.getManyProduct");
+    Route::get("/purchase_order/datatable_produk",[POBackend::class, 'datatableProduct'])->name("purchase_order.datatableProduct");
+    Route::post("/purchase_order/{id_po}/tambah_produk",[POBackend::class, 'insertProduct'])->name("purchase_order.insertProduct");
+    Route::post("/purchase_order/{id_po_produk}/edit_produk",[POBackend::class, 'updateProduct'])->name("purchase_order.updateProduct");
+    Route::post("/purchase_order/{id_po_produk}/hapus_produk",[POBackend::class, 'deleteProduct'])->name("purchase_order.deleteProduct");
 });

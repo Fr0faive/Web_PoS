@@ -30,3 +30,6 @@
     color: white !important;
     padding: 9px 16px;
 }
+table.dataTable tbody thead tr{
+    background-color: inherit;
+}

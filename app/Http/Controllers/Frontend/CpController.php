@@ -46,4 +46,12 @@ class CpController extends Controller
         $data   = [];
         return view("cp.absensi",$data);
     }
+
+    public function purchase_order(Request $request)
+    {
+        $data   = [];
+        $data["suppliers"]           = Supplier::all();
+        return view("cp.po",$data);
+    }
+    
 }
