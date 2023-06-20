@@ -3,12 +3,7 @@
 
 <head>
     @include("partials/header")
-    <title>Supplier</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <link rel="stylesheet" href="{{ url('/assets/custom_datatable.css') }}">
+    <title>Penjualan</title>
 </head>
 
 <body class="bg-dashboard bg-cover">
@@ -18,7 +13,7 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 rounded-lg shadow-md bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             <div class="flex">
-                <div class="flex-auto w-64 p-2">
+                <div class="flex-auto p-2">
                     <form action="{{ route("penjualan.insert") }}" method="POST" id="form">
                         @csrf
                         <input type="hidden" name="bayar" id="hidden-bayar">
@@ -44,7 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -87,7 +82,7 @@
                             </div>
                         </div>
                         <button type="button" id="btn-bayar" class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Bayar</button>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,7 +132,7 @@
 
             $("body").on("focusout","#bayar",function(e) {
                 let bayar   = $("#bayar").val().replace(/[^0-9]/g,'');
-                
+
                 let total   = parseInt($("#total").val().replace(/[^0-9]/g,''));
                 bayar       = parseInt(bayar);
                 let kembali     = bayar - total;
@@ -250,9 +245,19 @@
             })
 
             $("body").on("click",".btn-remove-product",function(e) {
-                if(confirm("Hapus?")){
-                    $(this).closest("tr")[0].outerHTML = '';
-                }
+                Swal.fire({
+                    title: 'Hapus?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $(this).closest("tr")[0].outerHTML = '';
+                    }
+                })
             })
 
             $("body").on("click","#btn-bayar",function() {
@@ -262,7 +267,7 @@
             $("#form").ajaxForm({
                 dataType    : "JSON",
                 success     : function(data) {
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#form")[0].reset();
                         $("#total").val("0");
