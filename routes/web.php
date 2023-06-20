@@ -97,15 +97,12 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::post("/purchase_order/{id_po_produk}/hapus_produk",[POBackend::class, 'deleteProduct'])->name("purchase_order.deleteProduct");
 
     // Penjualan
+    Route::get("/invoice/{id}",[CpController::class, 'detail_invoice'])->name("penjualan.invoice");
+    Route::get("/cp/invoice",[CpController::class, 'invoice'])->name("cp.invoice");
+    Route::get("/cp/penjualan",[CpController::class, 'penjualan'])->name("cp.penjualan");
     Route::get("/penjualan/{id}/get",[PenjualanBackend::class, 'getPenjualan'])->name("penjualan.get");
-    Route::get("/penjualan/getManyPenjualan",[PenjualanBackend::class, 'getManyPenjualan'])->name("penjualan.getManyPenjualan");
+    Route::get("/penjualan/datatable",[PenjualanBackend::class, 'datatable'])->name("penjualan.datatable");
     Route::post("/penjualan/tambah",[PenjualanBackend::class, 'insertPenjualan'])->name("penjualan.insert");
-
-    // Cart
-    Route::get("/cart/{id}/get",[CartBackend::class, 'getCart'])->name("cart.get");
-    Route::post("/cart/tambah",[CartBackend::class, 'insertCart'])->name("cart.insert");
-    Route::post("/cart/{id}/edit",[CartBackend::class, 'updateCart'])->name("cart.update");
-    Route::post("/cart/{id}/hapus",[CartBackend::class, 'deleteCart'])->name("cart.delete");    
 
     // Bonus Pegawai
     Route::get("/bonus_pegawai/{id}/get",[BonusPegawaiBackend::class, 'getBonusPegawai'])->name("bonus_pegawai.get");
