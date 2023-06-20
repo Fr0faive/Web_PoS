@@ -8,10 +8,10 @@
 
 <body class="bg-dashboard bg-auto sm:bg-cover">
     @include('partials.sidebar')
-    <div class="sm:ml-96 sm:mr-28 sm:my-12 bg-white rounded-lg backdrop-filter backdrop-blur-md bg-opacity-40">
-        <div class="flex flex-row gap-2 justify-between items-center">
+    <div class="sm:ml-96 sm:mr-28 sm:my-12 bg-white bg-cover rounded-lg backdrop-filter backdrop-blur-md bg-opacity-40 h-auto">
+        <div class="flex flex-row gap-2 justify-center items-center">
             <div
-                class="my-10 ml-10 rounded-2xl h-48 w-auto bg-dashboard bg-cover flex flex-col sm:flex-row">
+                class="my-10 mr-14 rounded-2xl h-48 w-auto bg-dashboard bg-cover flex flex-col sm:flex-row shadow-lg">
                 <h1 class="font-bold m-5 text-xl sm:text-3xl">
                     Hi, {{ \AppHelper::userLogin()->nama_pegawai }} !
                 </h1>
@@ -24,7 +24,7 @@
                 $dayOfWeek = $now->format('l');
                 $timeRange = $now->format('H:i');
             @endphp
-            <div class="m-10 min-w-32 min-h-48 p-3 font-medium">
+            <div class="my-10 mr-5 ml-28 min-w-32 min-h-48 p-3 font-medium shadow-lg">
                 <div class="w-32 flex-none rounded-t lg:rounded-t-none lg:rounded-l text-center shadow-lg ">
                     <div class="block rounded-t overflow-hidden  text-center ">
                         <div class="bg-blue-500 text-white py-1">
@@ -50,8 +50,28 @@
                 </div>
             </div>
         </div>
-        <div class="m-10 flex flex-col sm:flex-row justify-center items-center">
-            div.
+        <div class="mx-10 mb-10 mt-3 pb-12 flex flex-col sm:flex-row justify-center items-center">
+            <div class="m-5 flex items-center flex-col sm:flex-row bg-white rounded-lg shadow-lg">
+                <img src="{{ asset('assets/icon-po.svg') }}" alt="icon-goods-total" srcset="" class="ml-5">
+                <div class="flex flex-col m-5 justify-center">
+                    <span class="text-lg leading-normal">Total Produk</span>
+                    <p class="text-base">1450</p>
+                </div>
+            </div>
+            <div class="m-5 flex items-center flex-col sm:flex-row bg-white rounded-lg shadow-lg">
+                <img src="{{ asset('assets/icon-po.svg') }}" alt="icon-goods-total" srcset="" class="ml-5">
+                <div class="flex flex-col m-5 justify-center">
+                    <span class="text-lg leading-normal">Total Supplier</span>
+                    <p class="text-base">14</p>
+                </div>
+            </div>
+            <div class="m-5 flex items-center flex-col sm:flex-row bg-white rounded-lg shadow-lg">
+                <img src="{{ asset('assets/icon-po.svg') }}" alt="icon-goods-total" srcset="" class="ml-5">
+                <div class="flex flex-col m-5 justify-center">
+                    <span class="text-lg leading-normal">Total Pegawai</span>
+                    <p class="text-base">8</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

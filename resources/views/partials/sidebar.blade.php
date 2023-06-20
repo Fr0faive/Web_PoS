@@ -50,27 +50,27 @@
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.product') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-pro.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Stok Barang</span></a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-pro.svg') }}" alt="icon-pro" class="w-7 h-7"><span class="ml-3">Stok Barang</span></a>
                     </li>
                     @endauth
                     <li>
                         <a href="{{ route('cp.purchase_order') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-po.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Purchase Order</span></a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-po.svg') }}" alt="icon-po" class="w-7 h-7"><span class="ml-3">Purchase Order</span></a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-invoice.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Invoice</span></a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-invoice.svg') }}" alt="icon-invoice" class="w-7 h-7"><span class="ml-3">Invoice</span></a>
                     </li>
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.product_category') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-category.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Produk Kategori</span></a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-category.svg') }}" alt="icon-category" class="w-7 h-7"><span class="ml-3">Produk Kategori</span></a>
                     </li>
                     @endauth
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.supplier') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-supplier.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Supplier</span></a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-supplier.svg') }}" alt="icon-supplier" class="w-7 h-7"><span class="ml-3">Supplier</span></a>
                     </li>
                     @endauth
                 </ul>
@@ -86,21 +86,15 @@
             <li>
                 <a href="{{ route('cp.gaji_pegawai') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <img src="{{ asset('assets/icon-gaji.svg') }}" alt="icon-user" class="w-7 h-7">
-                    <span class="flex-1 ml-3 whitespace-nowrap">Penggajian</span>
+                    <img src="{{ asset('assets/icon-gaji.svg') }}" alt="icon-gaji" class="w-7 h-7">
+                    <span class="flex-1 ml-3 whitespace-nowrap">Kelola Gaji</span>
                 </a>
             </li>
             @endauth
             <li>
                 <a href="{{ route('logout') }}"
-                    class="flex items-center p-2 text-red-500 rounded-lg dark:text-red hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <svg aria-hidden="true"
-                        class="flex-shrink-0 w-6 h-6 text-red-500 transition duration-75 dark:text-red-400 group-hover:text-red-900 dark:group-hover:text-white"
-                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                            clip-rule="evenodd"></path>
-                    </svg>
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-red hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <img src="{{ asset('assets/icon-logout.svg') }}" alt="icon-gaji" class="w-7 h-7">
                     <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
                 </a>
             </li>
