@@ -11,6 +11,9 @@
 
     @include("partials.sidebar")
     <div class="p-4 sm:ml-64">
+        <div class="flex justify-center items-center bg-white mx-96 rounded-full backdrop-filter backdrop-blur-md bg-opacity-60">
+            <span class="font-bold text-4xl my-3 uppercase text-center">Kelola Gaji</span>
+        </div>
         <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add hidden" type="button">
             Tambah Karyawan
         </button>

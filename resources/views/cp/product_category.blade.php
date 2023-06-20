@@ -11,7 +11,10 @@
     @include("partials.sidebar")
 
     <div class="p-4 sm:ml-64">
-        <div class="p-4 rounded shadow-md bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
+        <div class="flex justify-center items-center bg-white mx-96 rounded-full backdrop-filter backdrop-blur-md bg-opacity-60">
+            <span class="font-bold text-4xl my-3 uppercase text-center">Kategori Produk</span>
+        </div>
+        <div class="p-4 rounded shadow-md my-3 bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             <!-- Modal toggle -->
             <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                 Tambah Kategori
