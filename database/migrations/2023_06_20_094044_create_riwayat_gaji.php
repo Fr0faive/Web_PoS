@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bonus_pegawai', function (Blueprint $table) {
-            $table->increments('id_bonus_pegawai');
-            $table->integer('id_jenis_bonus')->unsigned();
+        Schema::create('riwayat_gaji', function (Blueprint $table) {
+            $table->increments('id_riwayat_gaji');
             $table->integer('id_pegawai')->unsigned();
-            $table->integer('jumlah_bonus');
+            $table->integer('gaji_pokok');
+            // $table->integer('absensi');
             $table->integer('bulan')->unsigned();
             $table->integer('tahun')->unsigned();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('id_jenis_bonus')->references('id_jenis_bonus')->on('jenis_bonus');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawai');
         });
     }
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonus_pegawai');
+        Schema::dropIfExists('riwayat_gaji');
     }
 };

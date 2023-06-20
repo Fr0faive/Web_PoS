@@ -149,8 +149,8 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable({
-                serverside : true,
-                processing : true,
+                bProcessing : true,
+                bServerSide : true,
                 ajax    : {
                     url     : "{{ route('product.datatable') }}",
                 },

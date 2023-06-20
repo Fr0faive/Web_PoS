@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         \DB::table('pegawai')->insert([
             'nomor_pegawai' => "3010000001",
             'nama_pegawai' => "Si Kasir",
+            'gaji_pokok' => 4000000,
             'id_jabatan' => 2,
             'password_akun' => \Hash::make("kasir123"),
         ]);

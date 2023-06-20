@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Pegawai;
 use App\Models\Produk_Kategori;
 use App\Models\Supplier;
+use App\Models\Jenis_Bonus;
 
 
 class CpController extends Controller
@@ -52,6 +53,28 @@ class CpController extends Controller
         $data   = [];
         $data["suppliers"]           = Supplier::all();
         return view("cp.po",$data);
+    }
+
+    public function gaji_pegawai(Request $request)
+    {
+        $bulan_arr = [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+        ];
+        $data   = [];
+        $data["jenis_bonus"]           = Jenis_Bonus::all();
+        $data["bulan_arr"]              = $bulan_arr;
+        return view("cp.gaji_pegawai",$data);
     }
     
 }

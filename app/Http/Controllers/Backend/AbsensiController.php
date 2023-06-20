@@ -14,8 +14,13 @@ class AbsensiController extends Controller
     public function datatable(Request $request) {
         if(Auth::guard("admin")->check()){
             $data   = Absensi::join("pegawai","pegawai.id_pegawai","=","absensi.id_pegawai")
-            ->select("pegawai.nama_pegawai","pegawai.nomor_pegawai","tanggal_masuk","tanggal_keluar")
-            ->get();
+            ->select("pegawai.nama_pegawai","pegawai.nomor_pegawai","tanggal_masuk","tanggal_keluar");
+
+            if(!empty($request->id_pegawai)){
+                $data->where("absensi.id_pegawai",$request->id_pegawai);
+            }
+
+            $data->get();
         }else{
             $id_pegawai = \AppHelper::userLogin()->id_pegawai;
             $data   = Absensi::join("pegawai","pegawai.id_pegawai","=","absensi.id_pegawai")

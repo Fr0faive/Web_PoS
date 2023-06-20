@@ -3,12 +3,14 @@ use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CpController;
 
 use App\Http\Controllers\Backend\AuthController as AuthBackend;
+use App\Http\Controllers\Backend\AdminController as AdminBackend;
 use App\Http\Controllers\Backend\PegawaiController as PegawaiBackend;
 use App\Http\Controllers\Backend\ProductCategoryController as ProductCategoryBackend;
 use App\Http\Controllers\Backend\ProductController as ProductBackend;
 use App\Http\Controllers\Backend\SupplierController as SupplierBackend;
 use App\Http\Controllers\Backend\AbsensiController as AbsensiBackend;
 use App\Http\Controllers\Backend\POController as POBackend;
+use App\Http\Controllers\Backend\BonusPegawaiController as BonusPegawaiBackend;
 
 use Illuminate\Support\Facades\Route;
 
@@ -105,17 +107,17 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     Route::post("/cart/{id}/edit",[CartBackend::class, 'updateCart'])->name("cart.update");
     Route::post("/cart/{id}/hapus",[CartBackend::class, 'deleteCart'])->name("cart.delete");    
 
-    // Bonus Karyawan
-    Route::get("/cp/bonus_pegawai",[CpController::class, 'bonusPegawai'])->name("cp.bonus_pegawai");
-    Route::get("/bonus_pegawai/datatable",[BonusPegawaiBackend::class, 'datatable'])->name("bonus_pegawai.datatable");
+    // Bonus Pegawai
     Route::get("/bonus_pegawai/{id}/get",[BonusPegawaiBackend::class, 'getBonusPegawai'])->name("bonus_pegawai.get");
-    Route::post("/bonus_pegawai/tambah",[BonusPegawaiBackend::class, 'insertBonusPegawai'])->name("bonus_pegawai.insert");
+    Route::get("/bonus_pegawai/datatable",[BonusPegawaiBackend::class, 'datatable'])->name("bonus_pegawai.datatable");
+    Route::post("/bonus_pegawai/{id_pegawai}/tambah",[BonusPegawaiBackend::class, 'insertBonusPegawai'])->name("bonus_pegawai.insert");
     Route::post("/bonus_pegawai/{id}/edit",[BonusPegawaiBackend::class, 'updateBonusPegawai'])->name("bonus_pegawai.update");
     Route::post("/bonus_pegawai/{id}/hapus",[BonusPegawaiBackend::class, 'deleteBonusPegawai'])->name("bonus_pegawai.delete");
 
     // Admin
-    Route::get("/cp/gaji_karyawan",[CpController::class, 'gajiKaryawan'])->name("cp.gaji_karyawan");
-    Route::post("/admin/hitung_gaji_karyawan",[AdminBackend::class, 'hitungGajiKaryawan'])->name("admin.hitung_gaji_karyawan");
+    Route::get("/cp/gaji_pegawai",[CpController::class, 'gaji_pegawai'])->name("cp.gaji_pegawai");
+    Route::post("/admin/{id}/hitung_gaji_pegawai",[AdminBackend::class, 'hitungGajiPegawai'])->name("admin.hitung_gaji_pegawai");
+    Route::get("/admin/riwayat_gaji_pegawai",[AdminBackend::class, 'riwayatGajiPegawai'])->name("admin.riwayat_gaji_pegawai");
     Route::get("/cp/laporan_penjualan",[CpController::class, 'laporanPenjualan'])->name("cp.laporan_penjualan");
     Route::post("/admin/get_laporan_penjualan",[AdminBackend::class, 'getLaporanPenjualan'])->name("admin.get_laporan_penjualan");
 
