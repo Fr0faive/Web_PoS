@@ -3,7 +3,7 @@
 
 <head>
     @include('partials.header')
-    <title>Dashboard</title>
+    <title>Laporan Penjualan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.0.1/css/highcharts.min.css" integrity="sha512-/WPjwCqRHyh1ZjYVY4kbfwQog690qITBV/IlAoshySBusRi+KJUC+zNRGkE1Qf7vB8Zpj6sVzwm54idfpPzTKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.0.1/highcharts.min.js" integrity="sha512-XC3Yk00lu4YeJueUiJ2dhW1feASV0F7rCWlIKbPDSl5nLULRBzieHsDujma6SKpQHOlL1b/Vx89T4VSkq89wtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>

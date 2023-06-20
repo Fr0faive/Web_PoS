@@ -3,12 +3,7 @@
 
 <head>
     @include("partials/header")
-    <title>Supplier</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <link rel="stylesheet" href="{{ url('/assets/custom_datatable.css') }}">
+    <title>Penjualan</title>
 </head>
 
 <body class="bg-dashboard bg-cover">
@@ -250,9 +245,19 @@
             })
 
             $("body").on("click",".btn-remove-product",function(e) {
-                if(confirm("Hapus?")){
-                    $(this).closest("tr")[0].outerHTML = '';
-                }
+                Swal.fire({
+                    title: 'Hapus?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                
+                        $(this).closest("tr")[0].outerHTML = '';
+                    }
+                })
             })
 
             $("body").on("click","#btn-bayar",function() {
@@ -262,7 +267,7 @@
             $("#form").ajaxForm({
                 dataType    : "JSON",
                 success     : function(data) {
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#form")[0].reset();
                         $("#total").val("0");

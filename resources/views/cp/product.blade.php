@@ -205,25 +205,35 @@
 
             $("body").on("click",".btn_delete",function(e){
                 e.preventDefault();
-                if(confirm("Hapus?")){
-                    $(this).prop("disabled",true);
-                    let id = $(this).data("id");
-                    $.ajax({
-                        url     : `{{ route("product.delete",["id" => ":id"]) }}`.replace(":id",id),
-                        data    : {
-                            _token : $("[name=_token]").val()
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            $(this).prop("disabled",false);
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Hapus?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                
+                        $(this).prop("disabled",true);
+                        let id = $(this).data("id");
+                        $.ajax({
+                            url     : `{{ route("product.delete",["id" => ":id"]) }}`.replace(":id",id),
+                            data    : {
+                                _token : $("[name=_token]").val()
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                $(this).prop("disabled",false);
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
             $("#modal form").ajaxForm({
@@ -233,7 +243,7 @@
                 dataType : "JSON",
                 success : function(data){
                     $("#modal form [type=submit]").prop("disabled",false);
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#modal form [data-modal-hide=modal]").click();
                         $("#dataTable").DataTable().ajax.reload();
@@ -256,7 +266,7 @@
                 dataType : "JSON",
                 success : function(data){
                     $("#updateStokModal form [type=submit]").prop("disabled",false);
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#updateStokModal form [data-modal-hide=updateStokModal]").click();
                         $("#dataTable").DataTable().ajax.reload();

@@ -3,7 +3,7 @@
 
 <head>
     @include("partials/header")
-    <title>Presensi</title>
+    <title>Invoice</title>
 </head>
 
 <body class="bg-dashboard bg-cover">
@@ -60,48 +60,6 @@
                 order : [[2,"desc"]]
             });
 
-            $("body").on("click",".btn_absensi_masuk",function(e){
-                e.preventDefault();
-                if(confirm("Absensi Masuk?")){
-                    $.ajax({
-                        url     : `{{ route("absensi.insert") }}`,
-                        data    : {
-                            _token : $("[name=_token]").val(),
-                            action  : "masuk"
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
-                            }
-                        }
-                    })
-                }
-            })
-
-            $("body").on("click",".btn_absensi_keluar",function(e){
-                e.preventDefault();
-                if(confirm("Absensi Keluar?")){
-                    $.ajax({
-                        url     : `{{ route("absensi.insert") }}`,
-                        data    : {
-                            _token : $("[name=_token]").val(),
-                            action  : "keluar"
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            alert(data.message);
-
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
-                            }
-                        }
-                    })
-                }
-            })
 
         });
     </script>
