@@ -3,7 +3,7 @@
 
 <head>
     @include("partials/header")
-    <title>Produk Kategori</title>
+    <title>Presensi</title>
 </head>
 
 <body class="bg-dashboard bg-cover">

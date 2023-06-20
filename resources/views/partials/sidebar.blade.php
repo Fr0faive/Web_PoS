@@ -64,7 +64,7 @@
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.product_category') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-category.svg') }}" alt="icon-category" class="w-7 h-7"><span class="ml-3">Produk Kategori</span></a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-category.svg') }}" alt="icon-category" class="w-7 h-7"><span class="ml-3">Kategori Produk</span></a>
                     </li>
                     @endauth
                     @auth("admin")
@@ -80,7 +80,7 @@
                 <a href="{{ route('cp.pegawai') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <img src="{{ asset('assets/icon-user.svg') }}" alt="icon-user" class="w-7 h-7">
-                    <span class="flex-1 ml-3 whitespace-nowrap">Kelola Karyawan</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Kelola Pegawai</span>
                 </a>
             </li>
             <li>

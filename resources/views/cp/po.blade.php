@@ -3,7 +3,7 @@
 
 <head>
     @include("partials/header")
-    <title>Produk</title>
+    <title>Purchase Order</title>
     <style>
         .btn_detail_po{
             border-radius: 100%;

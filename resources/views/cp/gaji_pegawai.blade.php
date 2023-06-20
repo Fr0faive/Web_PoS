@@ -3,7 +3,7 @@
 
 <head>
     @include("partials/header")
-    <title>Pegawai</title>
+    <title>Kelola Gaji</title>
 </head>
 
 <body class="bg-dashboard bg-cover">
