@@ -65,7 +65,7 @@
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-po.svg') }}" alt="icon-po" class="w-7 h-7"><span class="ml-3">Purchase Order</span></a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('cp.invoice') }}"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-invoice.svg') }}" alt="icon-invoice" class="w-7 h-7"><span class="ml-3">Invoice</span></a>
                     </li>
                     @auth("admin")
@@ -98,6 +98,14 @@
                 </a>
             </li>
             @endauth
+            
+            <li>
+                <a href="{{ route('cp.laporan_penjualan') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <img src="{{ asset('assets/icon-gaji.svg') }}" alt="icon-gaji" class="w-7 h-7">
+                    <span class="flex-1 ml-3 whitespace-nowrap">Laporan Penjualan</span>
+                </a>
+            </li>
             <li>
                 <a href="{{ route('logout') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-red hover:bg-gray-100 dark:hover:bg-gray-700">
