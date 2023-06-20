@@ -18,7 +18,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
     </style>
 </head>
 
@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <div id="produkModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="produkModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full max-h-full bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <form action="" method="post">
@@ -216,7 +216,7 @@
                 }
             })
 
-            $("body").on("click",".btn_update_status",function(e){ 
+            $("body").on("click",".btn_update_status",function(e){
                 e.preventDefault();
                 if(confirm("Update Status?")){
                     let el  = this;
@@ -257,7 +257,7 @@
                     }
                 }
             })
-            
+
 
             $("body").on('click', '#dataTable .btn_detail_po', function () {
                 let table   = $("#dataTable").DataTable();
@@ -271,7 +271,7 @@
                     table.row($(el)).child.hide();
                     $(el).removeClass('shown');
                 })
-        
+
                 if(isShow){
                     row.child(format(row.data())).show();
                     tr.addClass('shown');

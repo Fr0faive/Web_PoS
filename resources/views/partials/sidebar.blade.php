@@ -30,15 +30,15 @@
                 <a href="{{ route('cp.absensi') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <img src="{{ asset('assets/icon-presensi.svg') }}" alt="icon-user" class="w-7 h-7">
-                    <span class="flex-1 ml-3 whitespace-nowrap">Absensi</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Presensi</span>
                 </a>
             </li>
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                    <img src="{{ asset('assets/icon-pro.svg') }}" alt="icon-user" class="w-7 h-7">
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Kelola</span>
+                    <img src="{{ asset('assets/icon-transaksi.svg') }}" alt="icon-user" class="w-7 h-7">
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Kelola Transaksi</span>
                     <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -50,28 +50,27 @@
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.product') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Stok Barang</a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-pro.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Stok Barang</span></a>
                     </li>
                     @endauth
                     <li>
                         <a href="{{ route('cp.purchase_order') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Purchase
-                            Order</a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-po.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Purchase Order</span></a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-invoice.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Invoice</span></a>
                     </li>
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.product_category') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Produk Kategori</a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-category.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Produk Kategori</span></a>
                     </li>
                     @endauth
                     @auth("admin")
                     <li>
                         <a href="{{ route('cp.supplier') }}"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Supplier</a>
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-supplier.svg') }}" alt="icon-user" class="w-7 h-7"><span class="ml-3">Supplier</span></a>
                     </li>
                     @endauth
                 </ul>
