@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('id_supplier')->references('id_supplier')->on('supplier');
+            $table->foreign('id_supplier')->references('id_supplier')->on('supplier')->onDelete('cascade');
         });
     }
 

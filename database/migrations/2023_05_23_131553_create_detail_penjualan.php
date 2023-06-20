@@ -22,8 +22,8 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('id_produk')->references('id_produk')->on('produk');
-            $table->foreign('id_penjualan')->references('id_penjualan')->on('penjualan');
+            $table->foreign('id_produk')->references('id_produk')->on('produk')->onDelete('cascade');
+            $table->foreign('id_penjualan')->references('id_penjualan')->on('penjualan')->onDelete('cascade');
         });
     }
 

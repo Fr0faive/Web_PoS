@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('id_produk_kategori')->references('id_produk_kategori')->on('produk_kategori');
+            $table->foreign('id_produk_kategori')->references('id_produk_kategori')->on('produk_kategori')->onDelete('cascade');
         });
     }
 

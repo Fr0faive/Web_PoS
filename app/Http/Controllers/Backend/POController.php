@@ -41,10 +41,33 @@ class POController extends Controller
         }
 
         if (!$validation_error){
+
+            $count_po_today   = Purchase_Order::where(\DB::raw("DATE(tanggal_po)"),date("Y-m-d"))
+            ->select(\DB::raw("COUNT(id_po) as total"),\DB::raw("MAX(nomor_po) as max_nomor_po"))
+            ->first();
+            if(empty($count_po_today->total)){
+                $nomor_po  = "PO".date("Ymd")."0000001";
+            }else{
+                $old_nomor_po  = $count_po_today->max_nomor_po;
+                $c  = 0;
+                do{
+                    $nomor_po  = "PO".date("Ymd");
+                    $substr         = substr($old_nomor_po,9);
+                    $next_invoice   = intval($substr) + 1;
+                    for($i = strlen($next_invoice); $i < 7;$i++){
+                        $nomor_po  .= "0";
+                    }
+                    $nomor_po  .= $next_invoice;
+                    $check_nomor_po    = Purchase_Order::where("nomor_po",$nomor_po)->first();
+
+                    $old_nomor_po  = $nomor_po;
+                    $c++;
+                }while(!empty($check_nomor_po));
+            }
             
             $po   = new Purchase_order;
             $po->id_supplier    = $request->id_supplier;
-            $po->nomor_po       = date("YmdHis");
+            $po->nomor_po       = $nomor_po;
             $po->tanggal_po     = date("Y-m-d H:i:s");
     
             if($po->save()){

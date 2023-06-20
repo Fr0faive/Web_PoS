@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('id_produk')->references('id_produk')->on('produk')->onDelete('cascade');
-            $table->foreign('id_supplier')->references('id_supplier')->on('supplier');
+            $table->foreign('id_supplier')->references('id_supplier')->on('supplier')->onDelete('cascade');
         });
     }
 
