@@ -4,11 +4,6 @@
 <head>
     @include("partials/header")
     <title>Pegawai</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <link rel="stylesheet" href="{{ url('/assets/custom_datatable.css') }}">    
 </head>
 
 <body class="bg-dashboard bg-cover">
@@ -91,7 +86,7 @@
                             </select>
                             <label for="bulan" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Bulan</label>
                         </div>
-                        
+
                         <div class="relative z-0 w-full mb-6 group">
                             <input type="text" name="jumlah_bonus" id="jumlah_bonus" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label for="jumlah_bonus" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jumlah</label>
@@ -123,7 +118,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-6 space-y-6 modal-body">
-                        
+
                     </div>
                     <!-- Modal footer -->
                     <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
@@ -198,7 +193,7 @@
                     tr.removeClass('shown_daftar_hadir');
                     tr.removeClass('shown_daftar_bonus');
                 })
-        
+
                 if(isShow){
                     row.child(formatDaftarBonus(row.data())).show();
                     tr.addClass('shown');
@@ -287,7 +282,7 @@
 
             $("body").on("click",".btn_edit_bonus",function(e){
                 e.preventDefault();
-                
+
                 $("#modal form").get(0).reset();
                 let id = $(this).data("id");
                 $.ajax({
@@ -305,7 +300,7 @@
                         $(".modal-title").html("Edit Bonus");
                     }
                 })
-                
+
             })
 
             $("body").on("click",".btn_delete_bonus",function(e){
@@ -330,7 +325,7 @@
                     })
                 }
             })
-            
+
             $("#modal form").ajaxForm({
                 beforeSubmit : function(e){
                     $("#modal form [type=submit]").prop("disabled",true);
@@ -363,7 +358,7 @@
                     tr.removeClass('shown_daftar_hadir');
                     tr.removeClass('shown_daftar_bonus');
                 })
-        
+
                 if(isShow){
                     row.child(formatHistoryGaji(row.data())).show();
                     tr.addClass('shown');
@@ -455,7 +450,7 @@
                     tr.removeClass('shown_daftar_hadir');
                     tr.removeClass('shown_daftar_bonus');
                 })
-        
+
                 if(isShow){
                     row.child(formatDaftarHadir(row.data())).show();
                     tr.addClass('shown');
@@ -536,12 +531,12 @@
                             }
                             let tanggal_masuk    = new Date(data.tanggal_masuk).getTime();
                             let tanggal_keluar   = new Date(data.tanggal_keluar).getTime();
-                            let diff             = tanggal_keluar - tanggal_masuk;                            
+                            let diff             = tanggal_keluar - tanggal_masuk;
                             let hour         = Math.floor(diff / (60 * 60 * 1000));
                             let minute       = Math.floor((diff - ( hour * (60 * 60 * 1000))) / (60 * 1000));
                             return ` ${hour} Jam ${minute} Menit `;
                         } },
-                        
+
                     ],
                     order : [[0,'desc']]
                 });

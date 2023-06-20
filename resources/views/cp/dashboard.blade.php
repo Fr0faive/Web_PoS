@@ -12,9 +12,12 @@
         <div class="flex flex-row gap-2 justify-center items-center">
             <div
                 class="my-10 mr-14 rounded-2xl h-48 w-auto bg-dashboard bg-cover flex flex-col sm:flex-row shadow-lg">
-                <h1 class="font-bold m-5 text-xl sm:text-3xl">
-                    Hi, {{ \AppHelper::userLogin()->nama_pegawai }} !
-                </h1>
+                <div class="flex flex-col">
+                    <h1 class="font-bold mx-5 mt-5 text-xl sm:text-3xl">
+                        Hi, {{ \AppHelper::userLogin()->nama_pegawai }} !
+                    </h1>
+                    <p class="mx-5 mb-5 text-sm sm:text-base font-semibold">Apa kabar hari ini?</p>
+                </div>
                 <img src="{{ asset('assets/icon-dh.svg') }}" alt="" srcset="" class="mx-auto h-24 w-24 md:h-48 sm:w-48">
             </div>
             @php
@@ -50,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="mx-10 mb-10 mt-3 pb-12 flex flex-col sm:flex-row justify-center items-center">
+        <div class="mx-10 mb-10 mt-3 pb-12 flex flex-col gap-2 sm:flex-row justify-center items-center">
             <div class="m-5 flex items-center flex-col sm:flex-row bg-white rounded-lg shadow-lg">
                 <img src="{{ asset('assets/icon-po.svg') }}" alt="icon-goods-total" srcset="" class="ml-5">
                 <div class="flex flex-col m-5 justify-center">
