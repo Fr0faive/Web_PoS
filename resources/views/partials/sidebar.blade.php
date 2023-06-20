@@ -95,11 +95,11 @@
                     <span class="flex-1 ml-3 whitespace-nowrap">Kelola Gaji</span>
                 </a>
             </li>
-            
+
             <li>
                 <a href="{{ route('cp.laporan_penjualan') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <img src="{{ asset('assets/icon-gaji.svg') }}" alt="icon-gaji" class="w-7 h-7">
+                    <img src="{{ asset('assets/icon-penjualan.svg') }}" alt="icon-gaji" class="w-7 h-7">
                     <span class="flex-1 ml-3 whitespace-nowrap">Laporan Penjualan</span>
                 </a>
             </li>
