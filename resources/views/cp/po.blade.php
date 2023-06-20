@@ -195,52 +195,71 @@
 
             $("body").on("click",".btn_delete",function(e){
                 e.preventDefault();
-                if(confirm("Hapus?")){
-                    $(this).prop("disabled",true);
-                    let id = $(this).data("id");
-                    $.ajax({
-                        url     : `{{ route("purchase_order.delete",["id" => ":id"]) }}`.replace(":id",id),
-                        data    : {
-                            _token : $("[name=_token]").val()
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            $(this).prop("disabled",false);
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Hapus?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).prop("disabled",true);
+                        let id = $(this).data("id");
+                        $.ajax({
+                            url     : `{{ route("purchase_order.delete",["id" => ":id"]) }}`.replace(":id",id),
+                            data    : {
+                                _token : $("[name=_token]").val()
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                $(this).prop("disabled",false);
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
             $("body").on("click",".btn_update_status",function(e){
                 e.preventDefault();
-                if(confirm("Update Status?")){
-                    let el  = this;
+                Swal.fire({
+                    title: 'Update Status?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                    $(el).prop("disabled",true);
-                    let id = $(el).data("id");
-                    let action = $(el).data("action");
-                    $.ajax({
-                        url     : `{{ route("purchase_order.update",["id" => ":id"]) }}`.replace(":id",id),
-                        data    : {
-                            _token : $("[name=_token]").val(),
-                            action : action
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            $(el).prop("disabled",false);
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
+                        let el  = this;
+
+                        $(el).prop("disabled",true);
+                        let id = $(el).data("id");
+                        let action = $(el).data("action");
+                        $.ajax({
+                            url     : `{{ route("purchase_order.update",["id" => ":id"]) }}`.replace(":id",id),
+                            data    : {
+                                _token : $("[name=_token]").val(),
+                                action : action
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                $(el).prop("disabled",false);
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
             $("#modal form").ajaxForm({
@@ -250,7 +269,7 @@
                 dataType : "JSON",
                 success : function(data){
                     $("#modal form [type=submit]").prop("disabled",false);
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#modal form [data-modal-hide=modal]").click();
                         $("#dataTable").DataTable().ajax.reload();
@@ -393,25 +412,34 @@
 
             $("body").on("click",".btn_delete_product",function(e){
                 e.preventDefault();
-                if(confirm("Hapus Produk?")){
-                    $(this).prop("disabled",true);
-                    let id = $(this).data("id");
-                    $.ajax({
-                        url     : `{{ route("purchase_order.deleteProduct",["id_po_produk" => ":id"]) }}`.replace(":id",id),
-                        data    : {
-                            _token : $("[name=_token]").val()
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            $(this).prop("disabled",false);
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable_product").DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Hapus Produk?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).prop("disabled",true);
+                        let id = $(this).data("id");
+                        $.ajax({
+                            url     : `{{ route("purchase_order.deleteProduct",["id_po_produk" => ":id"]) }}`.replace(":id",id),
+                            data    : {
+                                _token : $("[name=_token]").val()
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                $(this).prop("disabled",false);
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable_product").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
             $("#produkModal form").ajaxForm({
@@ -421,7 +449,7 @@
                 dataType : "JSON",
                 success : function(data){
                     $("#produkModal form [type=submit]").prop("disabled",false);
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#produkModal form [data-modal-hide=produkModal]").click();
                         $("#dataTable_product").DataTable().ajax.reload();

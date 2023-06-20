@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>Login - PoS</title>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 </head>
 <body class="bg-bg-login">
     <section class="h-full w-full">
@@ -63,7 +65,7 @@
                 dataType  : "JSON",
                 success     : function(data){
                     // $("#submitFormLogin").prop("disabled",false);
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         location.reload();
                     }

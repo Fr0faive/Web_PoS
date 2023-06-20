@@ -9,6 +9,7 @@ use App\Models\Produk_Kategori;
 use App\Models\Supplier;
 use App\Models\Jenis_Bonus;
 use App\Models\Produk;
+use App\Models\Penjualan;
 
 
 class CpController extends Controller
@@ -107,6 +108,51 @@ class CpController extends Controller
     {
         $data   = [];
         return view("cp.detail_invoice",$data);
+    }
+    public function laporanPenjualan(Request $request)
+    {
+        $bulan_arr = [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+        ];
+
+        $omzet_arr  = [];
+        $penjualan_arr  = [];
+        for ($i=0; $i < 12; $i++) { 
+            $penjualan_arr[$i] = [
+                "name"  => $bulan_arr[$i],
+                "y"     => 0
+            ];
+            $omzet_arr[$i] = 0;
+        }
+        $year       = date("Y");
+
+        $get_penjualan  = \DB::table("penjualan")
+        ->where(\DB::raw("YEAR(tanggal_penjualan)"),$year)
+        ->get();
+        foreach($get_penjualan as $penjualan){
+            $month  = date("m",strtotime($penjualan->tanggal_penjualan));
+            $index  = intval($month) - 1;
+
+            $omzet_arr[$index]  += $penjualan->total_harga;
+            $penjualan_arr[$index]["y"]++;
+        }
+
+        $data   = [];
+        $data["year"]  = $year;
+        $data["omzet_arr"]  = $omzet_arr;
+        $data["penjualan_arr"]  = $penjualan_arr;
+        return view("cp.laporan_penjualan",$data);
     }
     
 }

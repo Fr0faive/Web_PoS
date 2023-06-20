@@ -67,45 +67,63 @@
 
             $("body").on("click",".btn_absensi_masuk",function(e){
                 e.preventDefault();
-                if(confirm("Absensi Masuk?")){
-                    $.ajax({
-                        url     : `{{ route("absensi.insert") }}`,
-                        data    : {
-                            _token : $("[name=_token]").val(),
-                            action  : "masuk"
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Absensi Masuk?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url     : `{{ route("absensi.insert") }}`,
+                            data    : {
+                                _token : $("[name=_token]").val(),
+                                action  : "masuk"
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
             $("body").on("click",".btn_absensi_keluar",function(e){
                 e.preventDefault();
-                if(confirm("Absensi Keluar?")){
-                    $.ajax({
-                        url     : `{{ route("absensi.insert") }}`,
-                        data    : {
-                            _token : $("[name=_token]").val(),
-                            action  : "keluar"
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            alert(data.message);
+                Swal.fire({
+                    title: 'Absensi Keluar?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url     : `{{ route("absensi.insert") }}`,
+                            data    : {
+                                _token : $("[name=_token]").val(),
+                                action  : "keluar"
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                Swal.fire(data.message,"",data.status);
 
-                            if(data.status == "success"){
-                                $("#dataTable").DataTable().ajax.reload();
+                                if(data.status == "success"){
+                                    $("#dataTable").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
         });

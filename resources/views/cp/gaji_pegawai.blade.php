@@ -161,21 +161,32 @@
             $("body").on("click",".btn_hitung_gaji",function(e){
                 e.preventDefault();
                 let id = $(this).data("id");
-                if(confirm("Hitung gaji sekarang?")){
-                    $.ajax({
-                        url     : `{{ route("admin.hitung_gaji_pegawai",["id" => ":id"]) }}`.replace(":id",id),
-                        data    : {
-                            _token : $("[name=_token]").val()
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable_history").DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Hitung gaji sekarang?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url     : `{{ route("admin.hitung_gaji_pegawai",["id" => ":id"]) }}`.replace(":id",id),
+                            data    : {
+                                _token : $("[name=_token]").val()
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable_history").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
+                })
                 }
             })
 
@@ -308,25 +319,34 @@
 
             $("body").on("click",".btn_delete_bonus",function(e){
                 e.preventDefault();
-                if(confirm("Hapus?")){
-                    $(this).prop("disabled",true);
-                    let id = $(this).data("id");
-                    $.ajax({
-                        url     : `{{ route("bonus_pegawai.delete",["id" => ":id"]) }}`.replace(":id",id),
-                        data    : {
-                            _token : $("[name=_token]").val()
-                        },
-                        method  : "POST",
-                        dataType  : "JSON",
-                        success : function(data){
-                            $(this).prop("disabled",false);
-                            alert(data.message);
-                            if(data.status == "success"){
-                                $("#dataTable_bonus").DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Hapus?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).prop("disabled",true);
+                        let id = $(this).data("id");
+                        $.ajax({
+                            url     : `{{ route("bonus_pegawai.delete",["id" => ":id"]) }}`.replace(":id",id),
+                            data    : {
+                                _token : $("[name=_token]").val()
+                            },
+                            method  : "POST",
+                            dataType  : "JSON",
+                            success : function(data){
+                                $(this).prop("disabled",false);
+                                Swal.fire(data.message,"",data.status);
+                                if(data.status == "success"){
+                                    $("#dataTable_bonus").DataTable().ajax.reload();
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
+                })
             })
 
             $("#modal form").ajaxForm({
@@ -336,7 +356,7 @@
                 dataType : "JSON",
                 success : function(data){
                     $("#modal form [type=submit]").prop("disabled",false);
-                    alert(data.message);
+                    Swal.fire(data.message,"",data.status);
                     if(data.status == "success"){
                         $("#modal form [data-modal-hide=modal]").click();
                         $("#dataTable_bonus").DataTable().ajax.reload();
