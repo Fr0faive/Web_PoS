@@ -50,8 +50,8 @@
                 </div>
             </div>
         </div>
-        <div class="m-10 flex justify-center">
-            halo
+        <div class="m-10 flex flex-col sm:flex-row justify-center items-center">
+            div.
         </div>
     </div>
 </body>

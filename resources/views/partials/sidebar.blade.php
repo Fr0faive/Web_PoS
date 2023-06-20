@@ -86,7 +86,7 @@
             <li>
                 <a href="{{ route('cp.gaji_pegawai') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <img src="{{ asset('assets/icon-user.svg') }}" alt="icon-user" class="w-7 h-7">
+                    <img src="{{ asset('assets/icon-gaji.svg') }}" alt="icon-user" class="w-7 h-7">
                     <span class="flex-1 ml-3 whitespace-nowrap">Penggajian</span>
                 </a>
             </li>
