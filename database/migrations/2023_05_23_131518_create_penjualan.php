@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('penjualan', function (Blueprint $table) {
             $table->increments('id_penjualan');
             $table->integer('id_pegawai')->unsigned();
+            $table->string('nomor_invoice')->unique();
             $table->timestamp('tanggal_penjualan');
-            $table->integer('total_harga');
-            $table->integer('bayar');
-            $table->integer('kembali');
+            $table->bigInteger('total_harga');
+            $table->bigInteger('bayar');
+            $table->bigInteger('kembali');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 

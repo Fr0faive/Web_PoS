@@ -46,7 +46,6 @@ class DatabaseSeeder extends Seeder
             'password_akun' => \Hash::make("kasir123"),
         ]);
 
-
         // Bonus
         \DB::table('jenis_bonus')->insert([
             'nama_jenis_bonus' => "Tunjangan Hari Raya",

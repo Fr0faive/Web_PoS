@@ -17,7 +17,7 @@ class ProductController extends Controller
         return $data;
     }
     public function getProductBy(Request $request) {
-        $data   = Produk::where($request->all())->first();
+        $data   = Produk::orWhere($request->all())->first();
         return $data;
     }
     public function datatable(Request $request) {

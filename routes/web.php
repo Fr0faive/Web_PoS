@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SupplierController as SupplierBackend;
 use App\Http\Controllers\Backend\AbsensiController as AbsensiBackend;
 use App\Http\Controllers\Backend\POController as POBackend;
 use App\Http\Controllers\Backend\BonusPegawaiController as BonusPegawaiBackend;
+use App\Http\Controllers\Backend\PenjualanController as PenjualanBackend;
 
 use Illuminate\Support\Facades\Route;
 

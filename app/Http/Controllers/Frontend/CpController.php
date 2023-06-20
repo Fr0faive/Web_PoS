@@ -76,5 +76,11 @@ class CpController extends Controller
         $data["bulan_arr"]              = $bulan_arr;
         return view("cp.gaji_pegawai",$data);
     }
+
+    public function penjualan(Request $request)
+    {
+        $data   = [];
+        return view("cp.penjualan",$data);
+    }
     
 }
