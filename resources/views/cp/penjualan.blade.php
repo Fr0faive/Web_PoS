@@ -18,7 +18,7 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 rounded-lg shadow-md bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             <div class="flex">
-                <div class="flex-auto w-64 p-2">
+                <div class="flex-auto p-2">
                     <form action="{{ route("penjualan.insert") }}" method="POST" id="form">
                         @csrf
                         <input type="hidden" name="bayar" id="hidden-bayar">

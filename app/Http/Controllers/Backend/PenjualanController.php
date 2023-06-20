@@ -10,6 +10,7 @@ use App\Models\Penjualan;
 use App\Models\Detail_Penjualan;
 use App\Models\Produk;
 use DataTables;
+use Symfony\Component\VarDumper\VarDumper;
 
 class PenjualanController extends Controller
 {
@@ -63,7 +64,7 @@ class PenjualanController extends Controller
                         $message    = "Stok ". $product->nama_produk . " kurang! Tinggal ".$product->stok;
                         $validation_error   = true;
                     }else{
-                        $total_harga   += $product->harga;
+                        $total_harga   += ($product->harga * $qty);
 
                         $detail_produk_arr[]    = [
                             "id_produk"     => $product->id_produk,
@@ -87,19 +88,28 @@ class PenjualanController extends Controller
         if (!$validation_error){
             $id_pegawai     = \AppHelper::userLogin()->id_pegawai;
 
+
             $count_penjualan_today   = Penjualan::where(\DB::raw("DATE(tanggal_penjualan)"),date("Y-m-d"))
             ->select(\DB::raw("COUNT(id_penjualan) as total"),\DB::raw("MAX(nomor_invoice) as max_nomor_invoice"))
             ->first();
             if(empty($count_penjualan_today->total)){
                 $nomor_invoice  = date("Ymd")."0000001";
             }else{
-                $nomor_invoice  = date("Ymd");
-                $substr         = substr($count_penjualan_today->max_nomor_invoice,7);
-                $next_invoice   = intval($substr) + 1;
-                for($i = strlen($next_invoice); $i < 7;$i++){
-                    $nomor_invoice  .= "0";
-                }
-                $nomor_invoice  .= $next_invoice;
+                $old_nomor_invoice  = $count_penjualan_today->max_nomor_invoice;
+                $c  = 0;
+                do{
+                    $nomor_invoice  = date("Ymd");
+                    $substr         = substr($old_nomor_invoice,7);
+                    $next_invoice   = intval($substr) + 1;
+                    for($i = strlen($next_invoice); $i < 7;$i++){
+                        $nomor_invoice  .= "0";
+                    }
+                    $nomor_invoice  .= $next_invoice;
+                    $check_nomor_invoice    = Penjualan::where("nomor_invoice",$nomor_invoice)->first();
+
+                    $old_nomor_invoice  = $nomor_invoice;
+                    $c++;
+                }while(!empty($check_nomor_invoice));
             }
 
             $penjualan   = new Penjualan;
@@ -108,7 +118,7 @@ class PenjualanController extends Controller
             $penjualan->id_pegawai = $id_pegawai;
             $penjualan->total_harga = $total_harga;
             $penjualan->bayar = $request->bayar;
-            $penjualan->kembali = $penjualan->bayar - $penjualan->total;
+            $penjualan->kembali = $penjualan->bayar - $penjualan->total_harga;
     
             if($penjualan->save()){
 
