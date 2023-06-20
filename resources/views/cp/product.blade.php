@@ -163,7 +163,7 @@
                     { data: 'harga', name : 'harga',render : function(result){
                         return "Rp"+Intl.NumberFormat("id-ID").format(result);
                     } },
-                    { data: null, width : '300', render : function(data){
+                    { data: null, render : function(data){
                         return `
                         @auth("admin")
                         <button data-id="${data.id_produk}" type="button" class="btn_edit text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button>

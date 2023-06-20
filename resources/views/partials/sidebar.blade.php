@@ -95,7 +95,6 @@
                     <span class="flex-1 ml-3 whitespace-nowrap">Kelola Gaji</span>
                 </a>
             </li>
-            @endauth
             
             <li>
                 <a href="{{ route('cp.laporan_penjualan') }}"
@@ -104,6 +103,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap">Laporan Penjualan</span>
                 </a>
             </li>
+            @endauth
             <li>
                 <a href="{{ route('logout') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-red hover:bg-gray-100 dark:hover:bg-gray-700">

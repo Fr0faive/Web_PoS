@@ -18,7 +18,12 @@ class PenjualanController extends Controller
         return $data;
     }
     public function datatable(Request $request) {
-        $data   = Penjualan::all();
+        if(Auth::guard("admin")->check()){
+            $data   = Penjualan::all();
+        }else{
+            $id_pegawai     = \AppHelper::userLogin()->id_pegawai;
+            $data   = Penjualan::where("id_pegawai",$id_pegawai)->get();
+        }
         return DataTables::of($data)->make(true);
     }
     public function insertPenjualan(Request $request) {
@@ -83,12 +88,14 @@ class PenjualanController extends Controller
             $id_pegawai     = \AppHelper::userLogin()->id_pegawai;
 
             $count_penjualan_today   = Penjualan::where(\DB::raw("DATE(tanggal_penjualan)"),date("Y-m-d"))
-            ->select(\DB::raw("COUNT(id_penjualan) as total"))->first();
+            ->select(\DB::raw("COUNT(id_penjualan) as total"),\DB::raw("MAX(nomor_invoice) as max_nomor_invoice"))
+            ->first();
             if(empty($count_penjualan_today->total)){
                 $nomor_invoice  = date("Ymd")."0000001";
             }else{
                 $nomor_invoice  = date("Ymd");
-                $next_invoice   = intval($count_penjualan_today->total) + 1;
+                $substr         = substr($count_penjualan_today->max_nomor_invoice,7);
+                $next_invoice   = intval($substr) + 1;
                 for($i = strlen($next_invoice); $i < 7;$i++){
                     $nomor_invoice  .= "0";
                 }

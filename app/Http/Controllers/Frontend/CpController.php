@@ -8,13 +8,27 @@ use App\Models\Pegawai;
 use App\Models\Produk_Kategori;
 use App\Models\Supplier;
 use App\Models\Jenis_Bonus;
+use App\Models\Produk;
 
 
 class CpController extends Controller
 {
     public function dashboard(Request $request)
     {
+        $now = \Carbon\Carbon::now('Asia/Jakarta');
+        $month = $now->format('F');
+        $day = $now->format('d');
+        $dayOfWeek = $now->format('l');
+        $timeRange = $now->format('H:i');
+            
         $data   = [];
+        $data["total_product"]  = Produk::count();
+        $data["total_supplier"]  = Supplier::count();
+        $data["total_pegawai"]  = Pegawai::count();
+        $data["month"]  = $month;
+        $data["day"]  = $day;
+        $data["dayOfWeek"]  = $dayOfWeek;
+        $data["timeRange"]  = $timeRange;
         return view("cp.dashboard",$data);
     }
     public function pegawai(Request $request)
