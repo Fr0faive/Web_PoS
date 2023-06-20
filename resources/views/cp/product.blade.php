@@ -14,40 +14,42 @@
         <div class="flex justify-center items-center bg-white mx-96 rounded-full backdrop-filter backdrop-blur-md bg-opacity-60">
             <span class="font-bold text-4xl my-3 uppercase text-center">Produk</span>
         </div>
+        @auth("admin")
         <button data-modal-target="modal" data-modal-toggle="modal" class="btn_add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
             Tambah Produk
         </button>
+        @endauth
         <button data-modal-target="modal" data-modal-toggle="updateStokModal" class="hidden btn_add_stok" type="button">Tambah Stok</button>
 
-        <div class="relative shadow-md sm:rounded-lg ">
-            <div class="p-2 bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
-            <table class="table custom-table" id="dataTable">
-                <thead class="bg-gray-100">
-                    <tr>
-                        <td scope="col">
-                            Nama Produk
-                        </td>
-                        <td scope="col">
-                            Barcode
-                        </td>
-                        <td scope="col">
-                            Kategori
-                        </td>
-                        <td scope="col">
-                            Supplier
-                        </td>
-                        <td scope="col">
-                            Stok
-                        </td>
-                        <td scope="col">
-                            Harga
-                        </td>
-                        <td scope="col">
-                            Action
-                        </td>
-                    </tr>
-                </thead>
-            </table>
+        <div class="relative shadow-md sm:rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
+            <div class="p-2 mt-2 rounded-lg">
+                <table class="table custom-table" id="dataTable">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <td scope="col">
+                                Nama Produk
+                            </td>
+                            <td scope="col">
+                                Barcode
+                            </td>
+                            <td scope="col">
+                                Kategori
+                            </td>
+                            <td scope="col">
+                                Supplier
+                            </td>
+                            <td scope="col">
+                                Stok
+                            </td>
+                            <td scope="col">
+                                Harga
+                            </td>
+                            <td scope="col">
+                                Action
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
 
@@ -163,14 +165,17 @@
                     } },
                     { data: null, width : '300', render : function(data){
                         return `
+                        @auth("admin")
                         <button data-id="${data.id_produk}" type="button" class="btn_edit text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</button>
                         <button data-id="${data.id_produk}" type="button" class="btn_delete text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                        @endauth
                         <button data-id="${data.id_produk}" data-modal-target="updateStokModal" data-modal-toggle="modal" type="button" class="btn_update_stok text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Tambah Stok</button>
                         `;
                     } },
                 ]
             });
 
+            @auth("admin")
             $("body").on("click",".btn_add",function(e){
                 // e.preventDefault();
                 $("#modal form").get(0).reset();
@@ -235,6 +240,7 @@
                     }
                 }
             })
+            @endauth
 
             $("body").on("click",".btn_update_stok",function(e){
                 $(".btn_add_stok").click();

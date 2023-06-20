@@ -29,8 +29,8 @@
             Buat PO
         </button>
 
-        <div class="relative shadow-md sm:rounded-lg ">
-            <div class="p-2 bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
+        <div class="relative shadow-md sm:rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
+            <div class="p-2 mt-2 rounded-lg">
                 <table class="table custom-table" id="dataTable">
                     <thead class="bg-gray-100">
                         <tr>
@@ -165,7 +165,9 @@
                     { data: 'tanggal_penerimaan', name : 'tanggal_penerimaan' },
                     { data: null, width : '130', render : function(data){
                         let html    = `
+                            @auth("admin")
                             <button data-id="${data.id_po}" type="button" class="btn_delete text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                            @endauth
                         `;
 
                         if(data.tanggal_pengiriman == undefined){
@@ -336,7 +338,9 @@
                         { data: null, width : '130', render : function(data){
                             let html    = `
                                 <button data-id="${data.id_po_produk}" type="button" class="btn_edit_product text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900">Update</button>
+                                @auth("admin")
                                 <button data-id="${data.id_po_produk}" type="button" class="btn_delete_product text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                                @endauth
                             `;
                             return html;
                         } },

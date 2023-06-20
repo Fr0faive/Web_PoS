@@ -19,25 +19,25 @@
         </button>
 
         <div class="relative shadow-md sm:rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
-            <div class="p-2 bg-gray-50">
-            <table class="table custom-table" id="dataTable">
-                <thead class="bg-gray-100">
-                    <tr>
-                        <td scope="col">
-                            Nama
-                        </td>
-                        <td scope="col">
-                            Kontak
-                        </td>
-                        <td scope="col">
-                            Alamat
-                        </td>
-                        <td scope="col">
-                            Action
-                        </td>
-                    </tr>
-                </thead>
-            </table>
+            <div class="p-2 mt-2 rounded-lg">
+                <table class="table custom-table" id="dataTable">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <td scope="col">
+                                Nama
+                            </td>
+                            <td scope="col">
+                                Kontak
+                            </td>
+                            <td scope="col">
+                                Alamat
+                            </td>
+                            <td scope="col">
+                                Action
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
 

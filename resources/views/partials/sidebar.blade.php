@@ -54,12 +54,10 @@
                     </svg>
                 </button>
                 <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                    @auth("admin")
                     <li>
                         <a href="{{ route('cp.product') }}"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-pro.svg') }}" alt="icon-pro" class="w-7 h-7"><span class="ml-3">Kelola Produk</span></a>
                     </li>
-                    @endauth
                     <li>
                         <a href="{{ route('cp.purchase_order') }}"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"><img src="{{ asset('assets/icon-po.svg') }}" alt="icon-po" class="w-7 h-7"><span class="ml-3">Purchase Order</span></a>

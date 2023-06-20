@@ -66,7 +66,6 @@ Route::middleware(["checkLogin:true"])->group(function(){
     Route::get("/purchase_order/datatable_produk",[POBackend::class, 'datatableProduct'])->name("purchase_order.datatableProduct");
     Route::post("/purchase_order/{id_po}/tambah_produk",[POBackend::class, 'insertProduct'])->name("purchase_order.insertProduct");
     Route::post("/purchase_order/{id_po_produk}/edit_produk",[POBackend::class, 'updateProduct'])->name("purchase_order.updateProduct");
-    Route::post("/purchase_order/{id_po_produk}/hapus_produk",[POBackend::class, 'deleteProduct'])->name("purchase_order.deleteProduct");
 
     // Product
     Route::get("/cp/produk",[CpController::class, 'product'])->name("cp.product");
@@ -112,6 +111,7 @@ Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
 
     // Purchase Order
     Route::post("/purchase_order/{id}/hapus",[POBackend::class, 'deletePO'])->name("purchase_order.delete");
+    Route::post("/purchase_order/{id_po_produk}/hapus_produk",[POBackend::class, 'deleteProduct'])->name("purchase_order.deleteProduct");
 
     // Bonus Pegawai
     Route::get("/bonus_pegawai/{id}/get",[BonusPegawaiBackend::class, 'getBonusPegawai'])->name("bonus_pegawai.get");
