@@ -18,7 +18,7 @@ class PenjualanController extends Controller
         return $data;
     }
     public function datatable(Request $request) {
-        $data   = Penjualan::get();
+        $data   = Penjualan::all();
         return DataTables::of($data)->make(true);
     }
     public function insertPenjualan(Request $request) {

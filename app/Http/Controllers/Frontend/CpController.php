@@ -82,5 +82,17 @@ class CpController extends Controller
         $data   = [];
         return view("cp.penjualan",$data);
     }
+
+    public function invoice(Request $request)
+    {
+        $data   = [];
+        return view("cp.invoice",$data);
+    }
+
+    public function detail_invoice(Request $request,$nomor_invoice)
+    {
+        $data   = [];
+        return view("cp.detail_invoice",$data);
+    }
     
 }

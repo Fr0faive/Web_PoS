@@ -13,33 +13,24 @@
 
     <div class="p-4 sm:ml-64">
         <div class="flex justify-center items-center bg-white mx-96 rounded-full backdrop-filter backdrop-blur-md bg-opacity-60">
-            <span class="font-bold text-4xl my-3 uppercase text-center">presensi</span>
+            <span class="font-bold text-4xl my-3 uppercase text-center">Invoice</span>
         </div>
-        @auth("kasir")
-        <button class="btn_absensi_masuk text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-            Absensi Masuk
-        </button>
-
-        <button class="btn_absensi_keluar text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
-            Absensi Keluar
-        </button>
-        @endauth
         <div class="relative shadow-md sm:rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-40">
             <div class="p-2 mt-2 rounded-lg">
                 <table id="dataTable">
                     <thead class="bg-gray-100">
                         <tr>
                             <td scope="col">
-                                Nama Pegawai
+                                Nomor Invoice
                             </td>
                             <td scope="col">
-                                Nomor Pegawai
+                                Tanggal Transaksi
                             </td>
                             <td scope="col">
-                                Tanggal Masuk
+                                Total Harga
                             </td>
                             <td scope="col">
-                                Tanggal Keluar
+                                Bayar
                             </td>
                         </tr>
                     </thead>
@@ -54,13 +45,17 @@
                 serverside : true,
                 processing : true,
                 ajax    : {
-                    url     : "{{ route('absensi.datatable') }}",
+                    url     : "{{ route('penjualan.datatable') }}",
                 },
                 columns: [
-                    { data: 'nama_pegawai', name : 'nama_pegawai' },
-                    { data: 'nomor_pegawai', name : 'nomor_pegawai' },
-                    { data: 'tanggal_masuk', name : 'tanggal_masuk' },
-                    { data: 'tanggal_keluar', name : 'tanggal_keluar' },
+                    { data: 'nomor_invoice', name : 'nomor_invoice' },
+                    { data: 'tanggal_penjualan', name : 'tanggal_penjualan' },
+                    { data: 'total_harga', name : 'total_harga' , render : function(result){
+                        return "Rp"+Intl.NumberFormat("id-ID").format(result)
+                    } },
+                    { data: 'bayar', name : 'bayar', render : function(result){
+                        return "Rp"+Intl.NumberFormat("id-ID").format(result)
+                    } },
                 ],
                 order : [[2,"desc"]]
             });

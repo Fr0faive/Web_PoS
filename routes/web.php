@@ -41,13 +41,13 @@ Route::middleware(["checkLogin:false"])->group(function(){
 Route::middleware(["checkLogin:true"])->group(function(){   
     Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard");
 
+    // Absensi
     Route::get("/cp/absensi",[CpController::class, 'absensi'])->name("cp.absensi");
     Route::get("/absensi/datatable",[AbsensiBackend::class, 'datatable'])->name("absensi.datatable");
-    Route::post("/absensi/tambah",[AbsensiBackend::class, 'insertAbsensi'])->name("absensi.insert");
 
     // Penjualan
-    Route::get("/invoice/{id}",[CpController::class, 'detail_invoice'])->name("penjualan.invoice");
     Route::get("/cp/invoice",[CpController::class, 'invoice'])->name("cp.invoice");
+    Route::get("/invoice/{nomor_invoice}",[CpController::class, 'detail_invoice'])->name("penjualan.invoice");
     Route::get("/cp/penjualan",[CpController::class, 'penjualan'])->name("cp.penjualan");
     Route::get("/penjualan/{id}/get",[PenjualanBackend::class, 'getPenjualan'])->name("penjualan.get");
     Route::get("/penjualan/datatable",[PenjualanBackend::class, 'datatable'])->name("penjualan.datatable");
@@ -75,6 +75,10 @@ Route::middleware(["checkLogin:true"])->group(function(){
     Route::get("/produk/getBy",[ProductBackend::class, 'getProductBy'])->name("product.getBy");
 });
 
+Route::middleware(["checkLogin:true","checkRole:kasir"])->group(function(){
+    // Absensi
+    Route::post("/absensi/tambah",[AbsensiBackend::class, 'insertAbsensi'])->name("absensi.insert");
+});
 Route::middleware(["checkLogin:true","checkRole:admin"])->group(function(){
     // Pegawai
     Route::get("/cp/pegawai",[CpController::class, 'pegawai'])->name("cp.pegawai");
