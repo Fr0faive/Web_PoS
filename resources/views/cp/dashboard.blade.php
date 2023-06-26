@@ -9,9 +9,9 @@
 <body class="bg-dashboard bg-auto sm:bg-cover">
     @include('partials.sidebar')
     <div class="sm:ml-96 sm:mr-28 sm:my-12 bg-white bg-cover rounded-lg backdrop-filter backdrop-blur-md bg-opacity-40 h-auto">
-        <div class="flex flex-row gap-2 justify-center items-center">
+        <div class="flex flex-col md:flex-row gap-2 justify-center items-center">
             <div
-                class="my-10 mr-14 rounded-2xl h-48 w-auto bg-dashboard bg-cover flex flex-col sm:flex-row shadow-lg">
+                class="my-5 md:my-10 md:mr-14 rounded-2xl h-48 w-auto bg-dashboard bg-cover flex flex-col sm:flex-row shadow-lg">
                 <div class="flex flex-col">
                     <h1 class="font-bold mx-5 mt-5 text-xl sm:text-3xl">
                         Hi, {{ \AppHelper::userLogin()->nama_pegawai }} !
@@ -20,8 +20,8 @@
                 </div>
                 <img src="{{ asset('assets/icon-dh.svg') }}" alt="" srcset="" class="mx-auto h-24 w-24 md:h-48 sm:w-48">
             </div>
-            
-            <div class="my-10 mr-5 ml-28 min-w-32 min-h-48 p-3 font-medium shadow-lg">
+
+            <div class="my-5 md:my-10 md:mr-5 md:ml-28 min-w-32 min-h-48 p-3 font-medium shadow-lg">
                 <div class="w-32 flex-none rounded-t lg:rounded-t-none lg:rounded-l text-center shadow-lg ">
                     <div class="block rounded-t overflow-hidden  text-center ">
                         <div class="bg-blue-500 text-white py-1">
