@@ -39,7 +39,7 @@ Route::middleware(["checkLogin:false"])->group(function(){
     Route::post("/login_process",[AuthBackend::class, 'login'])->name("login_process");
 });
 
-Route::middleware(["checkLogin:true"])->group(function(){   
+Route::middleware(["checkLogin:true"])->group(function(){
     Route::get("/cp/dashboard",[CpController::class, 'dashboard'])->name("cp.dashboard");
 
     // Absensi
@@ -73,8 +73,8 @@ Route::middleware(["checkLogin:true"])->group(function(){
     Route::get("/produk/datatable",[ProductBackend::class, 'datatable'])->name("product.datatable");
     Route::post("/produk/{id}/update_stok",[ProductBackend::class, 'updateStokProduct'])->name("product.update_stok");
     Route::get("/produk/getBy",[ProductBackend::class, 'getProductBy'])->name("product.getBy");
-    
-    Route::get("/generate-invoice",[InvoiceBackend::class, 'generateInvoice'])->name("generateInvoice");
+
+    Route::get("/generate-invoice",[InvoiceBackend::class, 'generateInvoice'])->name("cp.invoice_print");
 });
 
 Route::middleware(["checkLogin:true","checkRole:kasir"])->group(function(){
