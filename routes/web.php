@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\AbsensiController as AbsensiBackend;
 use App\Http\Controllers\Backend\POController as POBackend;
 use App\Http\Controllers\Backend\BonusPegawaiController as BonusPegawaiBackend;
 use App\Http\Controllers\Backend\PenjualanController as PenjualanBackend;
+use App\Http\Controllers\Backend\InvoiceController as InvoiceBackend;
 
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +73,8 @@ Route::middleware(["checkLogin:true"])->group(function(){
     Route::get("/produk/datatable",[ProductBackend::class, 'datatable'])->name("product.datatable");
     Route::post("/produk/{id}/update_stok",[ProductBackend::class, 'updateStokProduct'])->name("product.update_stok");
     Route::get("/produk/getBy",[ProductBackend::class, 'getProductBy'])->name("product.getBy");
+    
+    Route::get("/generate-invoice",[InvoiceBackend::class, 'generateInvoice'])->name("generateInvoice");
 });
 
 Route::middleware(["checkLogin:true","checkRole:kasir"])->group(function(){
