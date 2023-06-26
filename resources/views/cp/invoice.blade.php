@@ -32,6 +32,9 @@
                             <td scope="col">
                                 Bayar
                             </td>
+                            <td scope="col">
+                                Action
+                            </td>
                         </tr>
                     </thead>
                 </table>
@@ -55,6 +58,11 @@
                     } },
                     { data: 'bayar', name : 'bayar', render : function(result){
                         return "Rp"+Intl.NumberFormat("id-ID").format(result)
+                    } },
+                    { data: null, render : function(result){
+                        return `
+                        <a href="/generate-invoice">Print Invoice</a>
+                        `;
                     } },
                 ],
                 order : [[2,"desc"]]
