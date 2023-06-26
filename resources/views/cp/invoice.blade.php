@@ -61,7 +61,7 @@
                     } },
                     { data: null, render : function(result){
                         return `
-                        <a href="/generate-invoice">Print Invoice</a>
+                        <a href="/invoice/${result.nomor_invoice}">Print Invoice</a>
                         `;
                     } },
                 ],

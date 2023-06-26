@@ -74,7 +74,8 @@ Route::middleware(["checkLogin:true"])->group(function(){
     Route::post("/produk/{id}/update_stok",[ProductBackend::class, 'updateStokProduct'])->name("product.update_stok");
     Route::get("/produk/getBy",[ProductBackend::class, 'getProductBy'])->name("product.getBy");
 
-    Route::get("/generate-invoice",[InvoiceBackend::class, 'generateInvoice'])->name("cp.invoice_print");
+    // Print generate
+    Route::get("/generate-invoice",[InvoiceBackend::class, 'generateInvoice'])->name("generateInvoice");
 });
 
 Route::middleware(["checkLogin:true","checkRole:kasir"])->group(function(){
