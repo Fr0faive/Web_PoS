@@ -106,7 +106,10 @@ class CpController extends Controller
 
     public function detail_invoice(Request $request,$nomor_invoice)
     {
+        $penjualan          = Penjualan::with(["detail_penjualan","detail_penjualan.produk"])->where("nomor_invoice",$nomor_invoice)->first();
+        // dd($penjualan->toArray());
         $data   = [];
+        $data["penjualan"]  = $penjualan;
         return view("cp.detail_invoice",$data);
     }
     public function laporanPenjualan(Request $request)
